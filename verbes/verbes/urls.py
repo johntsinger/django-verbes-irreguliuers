@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from verbes_app import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('verbes/', views.verbe_list, name='verbe-list'),
+    path('verbes/<int:table_id>/', views.table_detail, name='table-detail'),
+    path('verbes/table/', views.table_list, name='table_list')
 ]

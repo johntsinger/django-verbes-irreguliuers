@@ -8,3 +8,14 @@ class Verbe(models.Model):
 
     def __str__(self):
         return f'{self.francais}'
+<<<<<<< Updated upstream
+=======
+
+
+class Table(models.Model):
+    name = models.fields.CharField(max_length=30)
+    verbes = models.ManyToManyField(Verbe)
+
+    def __str__(self):
+        return f'{self.name}'
+>>>>>>> Stashed changes
