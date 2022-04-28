@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Verbe(models.Model):
     present = models.fields.CharField(max_length=50, blank=True)
     preterit = models.fields.CharField(max_length=50, blank=True)
@@ -8,8 +9,6 @@ class Verbe(models.Model):
 
     def __str__(self):
         return f'{self.francais}'
-<<<<<<< Updated upstream
-=======
 
 
 class Table(models.Model):
@@ -18,4 +17,4 @@ class Table(models.Model):
 
     def __str__(self):
         return f'{self.name}'
->>>>>>> Stashed changes
+      

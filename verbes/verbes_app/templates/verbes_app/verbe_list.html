@@ -1,0 +1,31 @@
+{% extends 'verbes_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Tous les verbes</h1>
+
+<table>
+    <caption>Verbes irréguliuers anglais</caption>
+    <thead>
+        <tr>
+            <th>Present</th>
+            <th>Preterit</th>
+            <th>Present perfect</th>
+            <th>Français</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for verbe in verbes %}
+        <tr>
+            <td>{{ verbe.present }}</td>
+            <td>{{ verbe.preterit }}</td>
+            <td>{{ verbe.participe_passe }}</td>
+            <td>{{ verbe.francais }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
