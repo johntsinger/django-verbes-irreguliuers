@@ -12,6 +12,8 @@ class Verbe(models.Model):
 
 
 class Table(models.Model):
-    class Meta:
-        db_table = ''
-    verbe = models.fields.ForeignKey(Verbe, on_delete=medels.SET_NULL)
+    name = models.fields.CharField(max_length=30)
+    verbes = models.ManyToManyField(Verbe)
+
+    def __str__(self):
+        return f'{self.name}'
