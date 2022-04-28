@@ -1,6 +1,30 @@
 table {
     border-collapse: collapse;
     caption-side: bottom;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+thead, tbody {
+    display: block;
+}
+
+thead th {
+    width: 200px;
+}
+
+thead th:last-child {
+    width: 215px;
+}
+
+tbody td {
+    width: 200px;
+    height: 40px;
+}
+
+tbody {
+    height: 800px;
+    overflow-y: auto;
 }
 
 th, td {
