@@ -20,5 +20,14 @@ from verbes_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< Updated upstream
     path('verbes/', views.verbe_list, name='verbe-list')
+=======
+<<<<<<< Updated upstream
+=======
+    path('verbes/', views.verbe_list, name='verbe-list'),
+    path('verbes/<int:table_id>/', views.table_detail, name='table-detail'),
+    path('verbes/table/', views.table_list, name='table_list')
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 ]

@@ -1,0 +1,17 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+<h1>Listes des verbes disponnibles</h1>
+
+<p>Listes de base :</p>
+
+<ul>
+    {% for table in tables %}
+    <li>
+        <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

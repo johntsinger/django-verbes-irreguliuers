@@ -1,0 +1,13 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+<h1>{{ table.name }}</h1>
+
+<ul>
+    {% for verbe in table.verbes.all %}
+    <li>{{ verbe.present }} {{ verbe.preterit }} {{ verbe.participe_passe}} {{ verbe.francais }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
