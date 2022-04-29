@@ -34,3 +34,18 @@ th, td {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+input[type='submit'] {
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    box-shadow: 1px 1px 0px black;
+    border-radius: 5px;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
