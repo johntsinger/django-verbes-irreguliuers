@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from verbes_app.models import Verbe, Table
+from verbes_app.forms import TableForm
+from django.shortcuts import redirect
 
 
 def verbe_list(request):
@@ -19,3 +21,16 @@ def table_list(request):
     return render(request,
         "verbes_app/table_list.html",
         {"tables": tables})
+
+def table_create(request):
+    if request.method == "POST":
+        form = TableForm(request.POST)
+        if form.is_valid():
+            table = form.save()
+            return redirect('table-detail', table.id)
+    else:
+        form = TableForm()
+
+    return render(request,
+        'verbes_app/table_create.html',
+        {'form': form})
