@@ -8,7 +8,8 @@ class Verbe(models.Model):
     francais = models.fields.CharField(max_length=50)
 
     def __str__(self):
-        return f'{self.francais}'
+        return f'{self.present} {self.preterit} {self.participe_passe} \
+        {self.francais}'
 
 
 class Table(models.Model):

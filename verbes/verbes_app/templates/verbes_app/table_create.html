@@ -1,0 +1,18 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
+<h1>Création d'une nouvelle liste de verbes</h1>
+
+{{ form.media }}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}

@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.i18n import JavaScriptCatalog
 from verbes_app import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('verbes/', views.verbe_list, name='verbe-list'),
-    path('verbes/<int:table_id>/', views.table_detail, name='table-detail'),
-    path('verbes/table/', views.table_list, name='table_list')
+    path('verbes/table/<int:table_id>/', views.table_detail, name='table-detail'),
+    path('verbes/table/', views.table_list, name='table_list'),
+    path('verbes/table/add', views.table_create, name='table-create'),
 ]
