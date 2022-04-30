@@ -8,6 +8,7 @@ class VerbeAdmin(admin.ModelAdmin):
 
 class TableAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    filter_horizontal = ('verbes',)
 
 
 admin.site.register(Verbe, VerbeAdmin)
