@@ -6,7 +6,8 @@ from verbes_app.models import Table
 class TableForm(forms.ModelForm):
     class Media:
         css = {
-            'all': ('admin/css/widgets.css', 'admin/css/base.css', 'admin/css/forms.css', 'verbes_app/css/styles.css')
+            'all': ('admin/css/widgets.css', 'admin/css/base.css',
+                    'admin/css/forms.css', 'verbes_app/css/custom_forms.css')
         }
 
     class Meta:
