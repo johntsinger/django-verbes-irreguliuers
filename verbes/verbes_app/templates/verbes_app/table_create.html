@@ -12,7 +12,10 @@
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Envoyer">
+    <div>
+        <input type="submit" value="Envoyer" name="envoyer">
+        <input type="submit" formnovalidate value= "Annuler" name="annuler">
+    </div>
 </form>
 
 {% endblock %}

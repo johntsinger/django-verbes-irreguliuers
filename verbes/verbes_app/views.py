@@ -24,10 +24,13 @@ def table_list(request):
 
 def table_create(request):
     if request.method == "POST":
-        form = TableForm(request.POST)
-        if form.is_valid():
-            table = form.save()
-            return redirect('table-detail', table.id)
+        if 'envoyer' in request.POST:
+            form = TableForm(request.POST)
+            if form.is_valid():
+                table = form.save()
+                return redirect('table-detail', table.id)
+        else:
+            return redirect('table-list')
     else:
         form = TableForm()
 
