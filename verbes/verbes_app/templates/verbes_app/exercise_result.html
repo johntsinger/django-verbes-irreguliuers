@@ -1,0 +1,34 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% load custom_filters %}
+
+<h1>Résultat de l'exercice</h1>
+
+<table class="results">
+    <thead>
+        <tr class='testcolor'>
+            {% for key, values in results.items %}
+                <th class="results">{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in n %}
+            <tr>
+                {% for key, values in results.items %}
+                    {% if correction|index:i|index:forloop.counter0 is not True %}
+                        <td class="results"><font color="red">{{ values|index:i }}</font></td>
+                    {% else %}
+                        <td class="results"><font color="green">{{ values|index:i }}</font></td>
+                    {% endif %}
+                {% endfor %}
+            </tr> 
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
