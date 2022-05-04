@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
-from verbes_app.models import Table
+from verbes_app.models import Table, Verbe
 
 
 class TableForm(forms.ModelForm):
@@ -16,3 +16,9 @@ class TableForm(forms.ModelForm):
         widgets = {
             'verbes': FilteredSelectMultiple('verbes', is_stacked=False)
         }
+
+
+class VerbeForm(forms.ModelForm):
+    class Meta:
+        model = Verbe
+        exclude = ('francais', 'done', 'success')
