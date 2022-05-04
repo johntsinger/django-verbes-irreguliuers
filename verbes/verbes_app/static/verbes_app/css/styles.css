@@ -1,36 +1,81 @@
-table {
+#list {
     border-collapse: collapse;
     caption-side: bottom;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
 
-thead, tbody {
+#list thead, #list tbody {
     display: block;
 }
 
-thead th {
+#list thead th {
     width: 200px;
 }
 
-thead th:last-child {
-    width: 215px;
+#list thead th:last-child {
+    width: 217px;
 }
 
-tbody td {
+#list tbody td {
     width: 200px;
     height: 40px;
 }
 
-tbody {
+#list tbody {
     height: 800px;
     overflow-y: auto;
 }
 
-th, td {
+#list th, #list td {
     font-size: 18px;
     border: 1px solid black;
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+th.results, td.results{
+    vertical-align: top;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+
+h1, h2, form {
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+thead th:last-child {
+    position: fixed;
+    text-align: center;
+}
+
+tbody td {
+    padding-right: 15px;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type='submit'] {
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    box-shadow: 1px 1px 0px black;
+}
+
+.testcolor {
+    color: blue;
 }
