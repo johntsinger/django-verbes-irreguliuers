@@ -8,9 +8,22 @@
 
 <ul>
     {% for table in tables %}
+    {% if table.default is True %}
     <li>
         <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
     </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+<p>Listes personnel :</p>
+<ul>
+    {% for table in tables %}
+    {% if table.default is not True %}
+    <li>
+        <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
+    </li>
+    {% endif %}
     {% endfor %}
 </ul>
 
