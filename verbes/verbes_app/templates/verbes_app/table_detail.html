@@ -4,7 +4,9 @@
 
 {% load custom_filters %}
 
-<h1>{{ table.name }}</h1>
+<h1> Liste : {{ table.name }} <div class="annotations">({{ table.verbes.count }} verbes)</div></h1>
+
+<a href="{% url 'exercise' table.id %}">S'entrainer sur ces verbes</a>
 
 <div class="table-container">
     <table class="list">
@@ -26,12 +28,13 @@
             </tr>
             {% endfor %}
         </tbody>
-        <caption>Liste contenant {{ table.verbes.count }} verbes</caption>
     </table>
 </div>
 
-<p>Verbes testés : {{ table.verbes|count_done }}</p>
-<p>Verbes réussis : {{ table.verbes|count_success }}</p>
-<p>Verbes non testés : {{ table.verbes|count_remainders }}</p>
+<div class="counter">
+    <p>Verbes testés : {{ table.verbes|count_done }}</p>
+    <p>Verbes réussis : {{ table.verbes|count_success }}</p>
+    <p>Verbes non testés : {{ table.verbes|count_remainders }}</p>
+</div>
 
 {% endblock %}
