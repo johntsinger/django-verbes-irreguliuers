@@ -1,41 +1,12 @@
-#list {
-    border-collapse: collapse;
-    caption-side: bottom;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+.success {
+    color: green;
 }
 
-#list thead, #list tbody {
-    display: block;
+.unsuccess {
+    color: red;
 }
 
-#list thead th {
-    width: 200px;
-}
-
-#list thead th:last-child {
-    width: 217px;
-}
-
-#list tbody td {
-    width: 200px;
-    height: 40px;
-}
-
-#list tbody {
-    height: 800px;
-    overflow-y: auto;
-}
-
-#list th, #list td {
-    font-size: 18px;
-    border: 1px solid black;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-th.results, td.results{
+th.results, td.results {
     vertical-align: top;
     text-align: center;
     width: 200px;
@@ -53,18 +24,29 @@ h2 {
     margin-left: 20px;
 }
 
-thead th:last-child {
-    position: fixed;
+td.exercise {
+    text-align: center;
+    vertical-align: middle;
+    height: 45px;
+    padding-right: 10px;
+}
+
+th.exercise, td.exercise, td.exercise input {
+    font-size: 18px;
+}
+
+th.exercise:last-child {
     text-align: center;
 }
 
-tbody td {
-    padding-right: 15px;
+td.exercise:last-child {
+    width: 300px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 label, input {
     display: block;
-    margin-bottom: 10px;
 }
 
 input[type='submit'] {
@@ -76,6 +58,38 @@ input[type='submit'] {
     box-shadow: 1px 1px 0px black;
 }
 
-.testcolor {
-    color: blue;
+.list {
+    border-collapse: collapse;
+    caption-side: bottom;
+}
+
+thead.list, tbody.list {
+    display: inline-block;
+}
+
+th.list {
+    width: 200px;
+    vertical-align: top;
+}
+
+th.list:last-child {
+    width: 217px;
+}
+
+td.list {
+    width: 200px;
+    height: 40px;
+}
+
+tbody.list {
+    height: 800px;
+    overflow-y: auto;
+}
+
+th.list, td.list {
+    font-size: 18px;
+    border: 1px solid black;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
