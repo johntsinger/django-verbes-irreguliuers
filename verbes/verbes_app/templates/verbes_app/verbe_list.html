@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1>Tous les verbes</h1>
+<h1>Tous les verbes <div class="annotations">({{ verbes.count }} verbes)</div></h1>
 
 <div class="table-container">
     <table class="list">
@@ -26,12 +26,13 @@
             </tr>
             {% endfor %}
         </tbody>
-        <caption>Verbes irréguliuers anglais</caption>
     </table>
 </div>
 
-<p>Verbes testés : {{ verbes|count_done }}</p>
-<p>Verbes réussis : {{ verbes|count_success }}</p>
-<p>Verbes non testés : {{ verbes|count_remainders }}</p>
+<div class="counter">
+    <p>Verbes testés : {{ verbes|count_done }}</p>
+    <p>Verbes réussis : {{ verbes|count_success }}</p>
+    <p>Verbes non testés : {{ verbes|count_remainders }}</p>
+</div>
 
 {% endblock %}
