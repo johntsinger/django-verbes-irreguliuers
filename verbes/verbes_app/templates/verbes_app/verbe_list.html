@@ -1,33 +1,37 @@
 {% extends 'verbes_app/base.html' %}
 
+{% load custom_filters %}
+
 {% block content %}
 
 <h1>Tous les verbes</h1>
 
-<table class='list'>
-    <caption>Verbes irréguliuers anglais</caption>
-    <thead class="list">
-        <tr>
-            <th class="list">Present</th>
-            <th class="list">Preterit</th>
-            <th class="list">Present perfect</th>
-            <th class="list">Français</th>
-        </tr>
-    </thead>
-    <tbody class="list">
-        {% for verbe in verbes %} 
+<div class="table-container">
+    <table class="list">
+        <thead class="list">
+            <tr>
+                <th class="list">Present</th>
+                <th class="list">Preterit</th>
+                <th class="list">Present perfect</th>
+                <th class="list">Français</th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            {% for verbe in verbes %} 
             <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
                 <td class="list">{{ verbe.present }}</td>
                 <td class="list">{{ verbe.preterit }}</td>
                 <td class="list">{{ verbe.participe_passe }}</td>
                 <td class="list">{{ verbe.francais }}</td>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            {% endfor %}
+        </tbody>
+        <caption>Verbes irréguliuers anglais</caption>
+    </table>
+</div>
 
-<p>Verbes testé : {{ verbes_tested }}</p>
-<p>Verbes réussit : {{ verbes_success }}</p>
-<p>Verbes non testé : {{ verbes_not_tested }}</p>
+<p>Verbes testés : {{ verbes|count_done }}</p>
+<p>Verbes réussis : {{ verbes|count_success }}</p>
+<p>Verbes non testés : {{ verbes|count_remainders }}</p>
 
 {% endblock %}
