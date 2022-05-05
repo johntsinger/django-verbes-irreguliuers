@@ -1,16 +1,22 @@
 from random import sample
 from django.shortcuts import render
+from django.shortcuts import redirect
 from verbes_app.functions import get_results, verify_answer
 from verbes_app.models import Verbe, Table
 from verbes_app.forms import TableForm, VerbeForm
-from django.shortcuts import redirect
 
 
 def verbe_list(request):
     verbes = Verbe.objects.all()
+    verbes_tested = Verbe.objects.filter(done=True).count()
+    verbes_success = Verbe.objects.filter(success=True).count()
+    verbes_not_tested = verbes.count() - verbes_tested
+
     return render(request,
         "verbes_app/verbe_list.html",
-        {"verbes": verbes})
+        {"verbes": verbes, 'verbes_tested': verbes_tested,
+         'verbes_success': verbes_success,
+         'verbes_not_tested': verbes_not_tested})
 
 def table_detail(request, table_id):
     table = Table.objects.get(id=table_id)
@@ -65,10 +71,6 @@ def exercise_result(request, table_id):
         verbe.done = True
         verbe.success = correction[i][3]
         verbe.save()
-
-    table = Table.objects.get(id=3)
-    for verbe in table.verbes.all():
-        print(verbe.done)
 
     return render(request,
         "verbes_app/exercise_result.html",
