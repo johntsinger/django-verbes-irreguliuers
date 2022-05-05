@@ -58,38 +58,51 @@ input[type='submit'] {
     box-shadow: 1px 1px 0px black;
 }
 
-.list {
+.table-container {
+    height: 50em;
+}
+
+table.list {
     border-collapse: collapse;
-    caption-side: bottom;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
 }
 
-thead.list, tbody.list {
-    display: inline-block;
-}
-
-th.list {
-    width: 200px;
-    vertical-align: top;
-}
-
-th.list:last-child {
-    width: 217px;
-}
-
-td.list {
-    width: 200px;
-    height: 40px;
+thead.list {
+    display: table;
+    width: calc(100% - 1.05em);
+    text-align: left;
 }
 
 tbody.list {
-    height: 800px;
-    overflow-y: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: block;
+    width: 100%;
+}
+
+tbody.list tr {
+    width: 100%;
+}
+
+thead.list, tbody.list tr {
+    display: table;
+    table-layout: fixed;
+}
+
+td.list {
+    height: 40px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+th.list {
+    height: 30px;
 }
 
 th.list, td.list {
     font-size: 18px;
-    border: 1px solid black;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    border: 1px solid lightgray;
 }
