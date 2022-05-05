@@ -6,6 +6,12 @@
     color: red;
 }
 
+.annotations {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
 th.results, td.results {
     vertical-align: top;
     text-align: center;
@@ -16,12 +22,27 @@ th.results, td.results {
 }
 
 h1, h2, form {
-    margin-top: 15px;
     margin-left: 5px;
 }
 
 h2 {
     margin-left: 20px;
+}
+
+a {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-bottom: 0px;
+    margin-right: 10px;
+}
+
+div.counter p {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 30px;
 }
 
 td.exercise {
@@ -72,8 +93,10 @@ table.list {
 
 thead.list {
     display: table;
-    width: calc(100% - 1.05em);
+    width: calc(100% - 1.0em);
     text-align: left;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
 }
 
 tbody.list {
@@ -81,6 +104,8 @@ tbody.list {
     overflow-x: hidden;
     display: block;
     width: 100%;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 tbody.list tr {
@@ -92,6 +117,12 @@ thead.list, tbody.list tr {
     table-layout: fixed;
 }
 
+th.list, td.list {
+    font-size: 18px;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
 td.list {
     height: 40px;
     padding-bottom: 5px;
@@ -100,9 +131,6 @@ td.list {
 
 th.list {
     height: 30px;
-}
-
-th.list, td.list {
-    font-size: 18px;
-    border: 1px solid lightgray;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
