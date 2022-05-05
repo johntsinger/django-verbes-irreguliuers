@@ -17,6 +17,7 @@ class Verbe(models.Model):
 class Table(models.Model):
     name = models.fields.CharField(max_length=30)
     verbes = models.ManyToManyField(Verbe)
+    default = models.fields.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}'

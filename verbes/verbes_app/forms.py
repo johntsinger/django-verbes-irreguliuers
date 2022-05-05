@@ -12,7 +12,7 @@ class TableForm(forms.ModelForm):
 
     class Meta:
         model = Table
-        fields = '__all__'
+        exclude = ('default',)
         widgets = {
             'verbes': FilteredSelectMultiple('verbes', is_stacked=False)
         }
