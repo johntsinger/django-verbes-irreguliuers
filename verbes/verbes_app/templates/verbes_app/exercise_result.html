@@ -8,9 +8,9 @@
 
 <h1>Résultat de l'exercice</h1>
 
-<table class="results">
+<table>
     <thead>
-        <tr class='testcolor'>
+        <tr>
             {% for key, values in results.items %}
                 <th class="results">{{ key }}</th>
             {% endfor %}
@@ -20,11 +20,7 @@
         {% for i in n %}
             <tr>
                 {% for key, values in results.items %}
-                    {% if correction|index:i|index:forloop.counter0 is not True %}
-                        <td class="results"><font color="red">{{ values|index:i }}</font></td>
-                    {% else %}
-                        <td class="results"><font color="green">{{ values|index:i }}</font></td>
-                    {% endif %}
+                    <td class="results {% if correction|index:i|index:forloop.counter0 is not True %} unsuccess {% else %} success {% endif %}">{{ values|index:i }}</td>
                 {% endfor %}
             </tr> 
         {% endfor %}
