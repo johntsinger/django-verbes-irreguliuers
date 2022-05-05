@@ -9,3 +9,15 @@ def index(list_item, i):
         return list_item[i]
     except:
         return None
+
+@register.filter
+def count_done(item):
+    return item.filter(done=True).count()
+
+@register.filter
+def count_success(item):
+    return item.filter(success=True).count()
+
+@register.filter
+def count_remainders(item):
+    return item.all().count() - count_done(item)
