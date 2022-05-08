@@ -31,7 +31,7 @@
         </tbody>
     </table>
     <input type="hidden" name="verbes_id" value="{{ verbes_id }}">
-    <input type="submit" value="Envoyer" formaction="{% url 'exercise-result' table.id %}">
+    <input class="button" type="submit" value="Envoyer" formaction="{% url 'exercise-result' table.id %}">
 </form>
 
 {% endblock %}
