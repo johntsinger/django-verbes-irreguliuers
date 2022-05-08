@@ -2,8 +2,6 @@
 
 {% block content %}
 
-{% load static %}
-
 {% load custom_filters %}
 
 <h1>Résultat de l'exercice</h1>
@@ -26,5 +24,7 @@
         {% endfor %}
     </tbody>
 </table>
+
+<a href="{% url 'exercise' table_id %}"><button class="button">Réésayer</button></a>
 
 {% endblock %}
