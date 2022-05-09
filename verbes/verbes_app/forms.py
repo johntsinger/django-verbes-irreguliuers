@@ -6,9 +6,16 @@ from verbes_app.models import Table, Verbe
 class TableForm(forms.ModelForm):
     class Media:
         css = {
-            'all': ('admin/css/widgets.css', 'admin/css/base.css',
-                    'admin/css/forms.css', 'verbes_app/css/custom_forms.css')
+            'all': ('admin/css/base.css', 'admin/css/forms.css',
+                    'verbes_app/css/custom_forms.css',
+                    'verbes_app/css/widgets_modified.css')
         }
+
+        js = (
+            "admin/js/core.js",
+            "verbes_app/js/SelectBoxModified.js",
+            "verbes_app/js/SelectFilter2Modified.js"
+        )
 
     class Meta:
         model = Table
