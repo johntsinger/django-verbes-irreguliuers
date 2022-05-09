@@ -1,3 +1,5 @@
+@import url(fonts.css);
+
 :root {
     --link-fg: #447e9b;
     --link-hover-color: #036;
@@ -5,6 +7,52 @@
     --button-fg: #fff;
     --button-bg: #79aec8;
     --button-hover-bg: #609ab6;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: var(--body-fg);
+    background: var(--body-bg);
+}
+
+h1, h2, form {
+    margin-top: 30px;
+    margin-left: 10px;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--body-quiet-color);
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+p, li {
+    font-weight: 300;
+}
+
+a {
+    font-size: 16px;
+}
+
+nav {
+    margin-top: 10px;
+    margin-left: 2px;
+}
+
+nav a {
+    font-size: 14px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+}
+
+label, input {
+    display: block;
 }
 
 .success {
@@ -17,8 +65,12 @@
 
 .annotations {
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     vertical-align: middle;
+}
+
+table.results {
+    margin-top: 30px;
 }
 
 th.results, td.results {
@@ -30,17 +82,10 @@ th.results, td.results {
     padding-bottom: 15px;
 }
 
-h1, h2, form {
-    margin-left: 5px;
-}
-
-h2 {
-    margin-left: 20px;
-}
-
 a.link {
     display: inline-block;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 a:link, a:visited {
@@ -55,11 +100,6 @@ a:focus, a:hover {
 
 a:focus {
     text-decoration: underline;
-}
-
-nav a {
-    margin-bottom: 0px;
-    margin-right: 10px;
 }
 
 p.table-list {
@@ -103,17 +143,13 @@ td.exercise:last-child {
     text-align: center;
 }
 
-label, input {
-    display: block;
-}
-
 .button {
     display: inline-block;
     background: var(--button-bg);
     color: var(--button-fg);
     margin-top: 20px;
     margin-right: 20px;
-    width: 100px;
+    width: 110px;
     height: 40px;
     box-shadow: 1px 1px 0px black;
     border-radius: 4px;
@@ -126,8 +162,13 @@ label, input {
     background: var(--button-hover-bg);
 }
 
-.table-container {
-    height: 50em;
+div.table-container {
+    height: 55em;
+    margin-top: 20px;
+}
+
+div.principal {
+    margin-top: 40px;
 }
 
 table.list {
