@@ -6,7 +6,7 @@
 
 <h1>Résultat de l'exercice</h1>
 
-<table>
+<table class="results">
     <thead>
         <tr>
             {% for key, values in results.items %}
@@ -26,5 +26,6 @@
 </table>
 
 <a href="{% url 'exercise' table_id %}"><button class="button">Réésayer</button></a>
+<a href="{% url 'table-list' %}"><button class="button">Retour au listes</button></a>
 
 {% endblock %}
