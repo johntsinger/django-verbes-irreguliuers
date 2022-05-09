@@ -1,0 +1,31 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+{% load custom_filters %}
+
+<h1>Résultat de l'exercice</h1>
+
+<table class="results">
+    <thead>
+        <tr>
+            {% for key, values in results.items %}
+                <th class="results">{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in n %}
+            <tr>
+                {% for key, values in results.items %}
+                    <td class="results {% if correction|index:i|index:forloop.counter0 is not True %} unsuccess {% else %} success {% endif %}">{{ values|index:i }}</td>
+                {% endfor %}
+            </tr> 
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'exercise' table_id %}"><button class="button">Réésayer</button></a>
+<a href="{% url 'table-list' %}"><button class="button">Retour au listes</button></a>
+
+{% endblock %}

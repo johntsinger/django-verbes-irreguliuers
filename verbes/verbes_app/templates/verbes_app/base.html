@@ -10,6 +10,11 @@
     </head>
     <body>
 
+        <nav>
+            <a href="{% url 'verbe-list' %}">Tous les verbes</a>
+            <a href="{% url 'table-list' %}">Listes</a>
+        </nav>
+
         {% block content %}{% endblock %}
         
     </body>

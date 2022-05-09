@@ -1,0 +1,37 @@
+{% extends 'verbes_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Exercice verbes irréguliers</h1>
+
+<h2>Liste de verbes : {{ table.name }}</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table class="exercise">
+        <thead>
+            <tr>
+                <th class="exercise">Present</th>
+                <th class="exercise">Preterit</th>
+                <th class="exercise">Present perfect</th>
+                <th class="exercise">Français</th>
+            </tr>
+        </thead>
+        <tbody class="exercise">
+            {% for verbe in verbes %}
+            <tr class="exercise">
+                <td class="exercise">{{ form.present }}</td>
+                <td class="exercise">{{ form.preterit }}</td>
+                <td class="exercise">{{ form.participe_passe }}</td>
+                <td class="exercise">{{ verbe.francais }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <input type="hidden" name="verbes_id" value="{{ verbes_id }}">
+    <input class="button" type="submit" value="Envoyer" formaction="{% url 'exercise-result' table.id %}">
+</form>
+
+{% endblock %}

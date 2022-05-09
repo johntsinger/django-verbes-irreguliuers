@@ -4,16 +4,30 @@
 
 <h1>Listes des verbes disponnibles</h1>
 
-<p>Listes de base :</p>
+<a class="link" href="{% url 'table-create' %}">Créer une nouvelle liste</a>
 
-<ul>
+<p class="table-list">Listes de base :</p>
+
+<ul class="table-list">
     {% for table in tables %}
+    {% if table.default is True %}
     <li>
         <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
     </li>
+    {% endif %}
     {% endfor %}
 </ul>
 
-<a href="{% url 'table-create' %}">Créer une nouvelle liste</a>
+<p class="table-list">Listes personnel :</p>
+
+<ul class="table-list">
+    {% for table in tables %}
+    {% if table.default is not True %}
+    <li>
+        <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
 
 {% endblock %}

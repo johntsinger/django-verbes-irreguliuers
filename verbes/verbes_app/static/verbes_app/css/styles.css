@@ -1,36 +1,224 @@
-table {
-    border-collapse: collapse;
-    caption-side: bottom;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+@import url(fonts.css);
+
+:root {
+    --link-fg: #447e9b;
+    --link-hover-color: #036;
+
+    --button-fg: #fff;
+    --button-bg: #79aec8;
+    --button-hover-bg: #609ab6;
 }
 
-thead, tbody {
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: var(--body-fg);
+    background: var(--body-bg);
+}
+
+h1, h2, form {
+    margin-top: 30px;
+    margin-left: 10px;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--body-quiet-color);
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+p, li {
+    font-weight: 300;
+}
+
+a {
+    font-size: 16px;
+}
+
+nav {
+    margin-top: 10px;
+    margin-left: 2px;
+}
+
+nav a {
+    font-size: 14px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+}
+
+label, input {
     display: block;
 }
 
-thead th {
+.success {
+    color: green;
+}
+
+.unsuccess {
+    color: red;
+}
+
+.annotations {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+table.results {
+    margin-top: 30px;
+}
+
+th.results, td.results {
+    vertical-align: top;
+    text-align: center;
     width: 200px;
-}
-
-thead th:last-child {
-    width: 215px;
-}
-
-tbody td {
-    width: 200px;
-    height: 40px;
-}
-
-tbody {
-    height: 800px;
-    overflow-y: auto;
-}
-
-th, td {
+    height: 30px;
     font-size: 18px;
-    border: 1px solid black;
+    padding-bottom: 15px;
+}
+
+a.link {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+a:link, a:visited {
+    color: var(--link-fg);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+}
+
+a:focus, a:hover {
+    color: var(--link-hover-color);
+}
+
+a:focus {
+    text-decoration: underline;
+}
+
+p.table-list {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+ul.table-list {
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+ul.table-list li {
+    margin-bottom: 5px;
+}
+
+div.counter p {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+td.exercise {
+    text-align: center;
+    vertical-align: middle;
+    height: 45px;
     padding-right: 10px;
-    padding-top: 5px;
+}
+
+th.exercise, td.exercise, td.exercise input {
+    font-size: 18px;
+}
+
+th.exercise:last-child {
+    text-align: center;
+}
+
+td.exercise:last-child {
+    width: 300px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    background: var(--button-bg);
+    color: var(--button-fg);
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 110px;
+    height: 40px;
+    box-shadow: 1px 1px 0px black;
+    border-radius: 4px;
+    border: none;
+    transition: background 0.15s;
+    cursor: pointer;
+}
+
+.button:active, .button:focus, .button:hover {
+    background: var(--button-hover-bg);
+}
+
+div.table-container {
+    height: 55em;
+    margin-top: 20px;
+}
+
+div.principal {
+    margin-top: 40px;
+}
+
+table.list {
+    border-collapse: collapse;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+
+thead.list {
+    display: table;
+    width: calc(100% - 1.0em);
+    text-align: left;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+tbody.list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: block;
+    width: 100%;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+tbody.list tr {
+    width: 100%;
+}
+
+thead.list, tbody.list tr {
+    display: table;
+    table-layout: fixed;
+}
+
+th.list, td.list {
+    font-size: 18px;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+td.list {
+    height: 40px;
     padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+th.list {
+    height: 30px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }

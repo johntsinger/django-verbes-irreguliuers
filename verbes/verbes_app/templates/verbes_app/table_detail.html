@@ -2,12 +2,39 @@
 
 {% block content %}
 
-<h1>{{ table.name }}</h1>
+{% load custom_filters %}
 
-<ul>
-    {% for verbe in table.verbes.all %}
-    <li>{{ verbe.present }} {{ verbe.preterit }} {{ verbe.participe_passe}} {{ verbe.francais }}</li>
-    {% endfor %}
-</ul>
+<h1> Liste : {{ table.name }} <div class="annotations">({{ table.verbes.count }} verbes)</div></h1>
+
+<a class="link" href="{% url 'exercise' table.id %}">S'entrainer sur ces verbes</a>
+
+<div class="table-container">
+    <table class="list">
+        <thead class="list">
+            <tr>
+                <th class="list">Present</th>
+                <th class="list">Preterit</th>
+                <th class="list">Present perfect</th>
+                <th class="list">Français</th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            {% for verbe in table.verbes.all %} 
+            <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
+                <td class="list">{{ verbe.present }}</td>
+                <td class="list">{{ verbe.preterit }}</td>
+                <td class="list">{{ verbe.participe_passe }}</td>
+                <td class="list">{{ verbe.francais }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="counter">
+    <p>Verbes testés : {{ table.verbes|count_done }}</p>
+    <p>Verbes réussis : {{ table.verbes|count_success }}</p>
+    <p>Verbes non testés : {{ table.verbes|count_remainders }}</p>
+</div>
 
 {% endblock %}

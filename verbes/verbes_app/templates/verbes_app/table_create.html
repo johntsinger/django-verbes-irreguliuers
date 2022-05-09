@@ -1,13 +1,16 @@
 {% extends 'verbes_app/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
-
 <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
-
-<h1>Création d'une nouvelle liste de verbes</h1>
+<!--Define global js var verbes otherwise it can't be used in script SelectBoxModified-->
+<script type="text/javascript">var verbes_json = '{{ verbes | safe }}'</script>
 
 {{ form.media }}
+
+<h1>Création d'une nouvelle liste de verbes</h1>
 
 <form action="" method="post">
     {% csrf_token %}
