@@ -62,12 +62,13 @@
     margin-left: 8px;
 }
 
+/* MODIFIED margin origin 10em 5px 0 5px; */
 .selector ul.selector-chooser {
     float: left;
     width: 22px;
     background-color: var(--selected-bg);
     border-radius: 10px;
-    margin: 10em 5px 0 5px;
+    margin: 9em 5px 0 5px;
     padding: 0;
 }
 
@@ -180,7 +181,7 @@ a.selector-clearall-not-done {
     display: block; /* ADDED */
     margin-bottom: 10px; /* ADDED */
     padding: 0 0 0 18px;
-    background: url(../img/selector-icons.svg) 30% -128px no-repeat;
+    background: url(../img/selector-icons.svg) 29% -128px no-repeat;
     cursor: default;
 }
 
@@ -188,7 +189,7 @@ a.selector-clearall-not-done {
 a.active.selector-clearall:focus, a.active.selector-clearall-false:focus,
 a.active.selector-clearall-not-done:focus, a.active.selector-clearall:hover,
 a.active.selector-clearall-false:hover, a.active.selector-clearall-not-done:hover {
-    background-position: 30% -144px;
+    background-position: 29% -144px;
 }
 
 /* STACKED SELECTORS */
