@@ -163,6 +163,7 @@ td.exercise:last-child {
 }
 
 div.table-container {
+    width: 70em;
     height: 55em;
     margin-top: 20px;
 }
