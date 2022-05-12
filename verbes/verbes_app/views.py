@@ -53,15 +53,31 @@ def table_update(request, table_id):
     table = Table.objects.get(id=table_id)
     if request.method == 'POST':
         form = TableForm(request.POST, instance=table)
-        if form.is_valid():
-            form.save()
-            return redirect('table-detail', table.id)
+        if 'envoyer' in request.POST:
+            if form.is_valid():
+                form.save()
+                return redirect('table-detail', table.id)
+        else:
+            return redirect('table-list')
     else:
         form = TableForm(instance=table)  
 
     return render(request,
         'verbes_app/table_update.html',
         {'form': form, 'verbes': verbes})
+
+def table_delete(request, table_id):
+    table = Table.objects.get(id=table_id)
+    if request.method == 'POST':
+        if 'supprimer' in request.POST:
+            table.delete()
+            return redirect('table-list')
+        else:
+            return redirect('table-list')
+
+    return render(request,
+        'verbes_app/table_delete.html',
+        {'table': table})
 
 def exercise(request, table_id):
     table = Table.objects.get(id=table_id)
