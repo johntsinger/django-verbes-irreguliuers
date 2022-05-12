@@ -22,12 +22,12 @@
 
 <ul class="table-list">
     {% for table in tables %}
-    {% if table.default is not True %}
+    {% if not table.default %}
     <li>
         <div class="icons-container">
             <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
-            <a class='icon-update' href="{% url 'table-update' table.id %}">Update</a>
-            <a class="icon-delete" href="">Delete</a>
+            <a class='icon-update' href="{% url 'table-update' table.id %}" title="Modifier">Update</a>
+            <a class="icon-delete" href="{% url 'table-delete' table.id %}" title="Supprimer">Delete</a>
         </div>
     </li>
     {% endif %}
