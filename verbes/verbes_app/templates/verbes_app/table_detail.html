@@ -6,7 +6,15 @@
 
 <h1> Liste : {{ table.name }} <div class="annotations">({{ table.verbes.count }} verbes)</div></h1>
 
-<a class="link" href="{% url 'exercise' table.id %}">S'entrainer sur ces verbes</a>
+<div class=link>
+    <a class="link" href="{% url 'exercise' table.id %}">S'entrainer sur ces verbes</a>
+    {% if not table.default %}
+    <div class="update-delete">
+        <a class="update" href="{% url 'table-update' table.id %}">[modifier]</a>
+        <a class="delete" href="{% url 'table-delete' table.id %}">[supprimer]</a>
+    </div>
+    {% endif %}
+</div>
 
 <div class="table-container">
     <table class="list">
