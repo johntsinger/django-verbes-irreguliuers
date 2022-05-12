@@ -55,6 +55,8 @@ label, input {
     display: block;
 }
 
+/* color success and unsuccess verbs */
+
 .success {
     color: green;
 }
@@ -63,24 +65,15 @@ label, input {
     color: red;
 }
 
+/* annotations near title */
+
 .annotations {
     display: inline-block;
     font-size: 14px;
     vertical-align: middle;
 }
 
-table.results {
-    margin-top: 30px;
-}
-
-th.results, td.results {
-    vertical-align: top;
-    text-align: center;
-    width: 200px;
-    height: 30px;
-    font-size: 18px;
-    padding-bottom: 15px;
-}
+/* link */
 
 a.link {
     display: inline-block;
@@ -102,25 +95,7 @@ a:focus {
     text-decoration: underline;
 }
 
-p.table-list {
-    font-size: 18px;
-    margin-left: 10px;
-}
-
-ul.table-list {
-    font-size: 18px;
-    margin-left: 5px;
-}
-
-ul.table-list li {
-    margin-bottom: 5px;
-}
-
-div.counter p {
-    display: inline-block;
-    margin-right: 20px;
-    margin-top: 30px;
-}
+/* exercise */
 
 td.exercise {
     text-align: center;
@@ -143,6 +118,23 @@ td.exercise:last-child {
     text-align: center;
 }
 
+/* exercise_result */
+
+table.results {
+    margin-top: 30px;
+}
+
+th.results, td.results {
+    vertical-align: top;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+
+/* Buttons exercise and exercise_result */
+
 .button {
     display: inline-block;
     background: var(--button-bg);
@@ -161,6 +153,8 @@ td.exercise:last-child {
 .button:active, .button:focus, .button:hover {
     background: var(--button-hover-bg);
 }
+
+/* verbes_list, table_detail */
 
 div.table-container {
     width: 70em;
@@ -222,4 +216,74 @@ th.list {
     height: 30px;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
+}
+
+div.counter p {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+/* Table list */
+
+p.table-list {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+ul.table-list {
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+ul.table-list li {
+    margin-bottom: 5px;
+}
+
+/* Icons table_list */
+
+.icons-container {
+    width: fit-content;
+    padding-right: 15px;
+}
+
+.icon-update, .icon-delete {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    text-indent: -3000px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.icons-container .icon-update,
+.icons-container .icon-delete {
+    visibility: hidden;
+}
+
+.icons-container:hover .icon-update,
+.icons-container:hover .icon-delete {
+    visibility: visible;
+}
+
+.icon-update, .icon-update:hover,
+.icon-delete, .icon-delete:hover {
+    margin-left: 10px;
+}
+
+.icon-update {
+    background: url(../img/icon-update.svg) no-repeat;
+}
+
+.icon-update:hover {
+    background: url(../img/icon-update-alt.svg) no-repeat;
+}
+
+.icon-delete {
+    background: url(../img/icon-delete.svg) no-repeat;
+}
+
+.icon-delete:hover {
+    background: url(../img/icon-delete-alt.svg) no-repeat;
 }

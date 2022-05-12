@@ -24,7 +24,11 @@
     {% for table in tables %}
     {% if table.default is not True %}
     <li>
-        <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
+        <div class="icons-container">
+            <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
+            <a class='icon-update' href="{% url 'table-update' table.id %}">Update</a>
+            <a class="icon-delete" href="">Delete</a>
+        </div>
     </li>
     {% endif %}
     {% endfor %}
