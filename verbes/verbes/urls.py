@@ -26,6 +26,7 @@ urlpatterns = [
     path('verbes/table/<int:table_id>/', views.table_detail, name='table-detail'),
     path('verbes/table/', views.table_list, name='table-list'),
     path('verbes/table/add/', views.table_create, name='table-create'),
+    path('verbes/table/<int:table_id>/change', views.table_update, name='table-update'),
     path('verbes/table/<int:table_id>/exercise/', views.exercise, name='exercise'),
     path('verbes/table/<int:table_id>/exercise/result/', views.exercise_result,
          name='exercise-result')

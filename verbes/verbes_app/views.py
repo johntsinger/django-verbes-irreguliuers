@@ -46,6 +46,23 @@ def table_create(request):
         'verbes_app/table_create.html',
         {'form': form, 'verbes': verbes})
 
+def table_update(request, table_id):
+    # creates a json dict of object Verbe with selected fields
+    verbes = serializers.serialize('json', Verbe.objects.all(),
+        fields=('done', 'success'))
+    table = Table.objects.get(id=table_id)
+    if request.method == 'POST':
+        form = TableForm(request.POST, instance=table)
+        if form.is_valid():
+            form.save()
+            return redirect('table-detail', table.id)
+    else:
+        form = TableForm(instance=table)  
+
+    return render(request,
+        'verbes_app/table_update.html',
+        {'form': form, 'verbes': verbes})
+
 def exercise(request, table_id):
     table = Table.objects.get(id=table_id)
     # gets 10 random items of table.verbes

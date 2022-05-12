@@ -1,0 +1,24 @@
+{% extends 'verbes_app/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+<!--Define global js var verbes otherwise it can't be used in script SelectBoxModified-->
+<script type="text/javascript">var verbes_json = '{{ verbes | safe }}'</script>
+
+{{ form.media }}
+
+<h1>Mise a jour de la liste de verbes {{ table.name }}</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <input type="submit" value="Envoyer" name="envoyer">
+        <input type="submit" formnovalidate value= "Annuler" name="annuler">
+    </div>
+</form>
+
+{% endblock %}
