@@ -20,8 +20,8 @@
             {% for verbe in verbes %} 
             <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
                 <td class="list">{{ verbe.present }}</td>
-                <td class="list">{{ verbe.preterit }}</td>
-                <td class="list">{{ verbe.participe_passe }}</td>
+                <td class="list">{{ verbe.preterit|replace:"/" }}</td>
+                <td class="list">{{ verbe.participe_passe|replace:"/" }}</td>
                 <td class="list">{{ verbe.francais }}</td>
             </tr>
             {% endfor %}
