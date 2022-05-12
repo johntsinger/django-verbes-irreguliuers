@@ -1,16 +1,16 @@
 @import url(fonts.css);
 
 :root {
+    --body-fg: #333;
+    --body-bg: #fff;
+    --body-quiet-color: #666;
+
     --link-fg: #447e9b;
     --link-hover-color: #036;
 
     --button-fg: #fff;
     --button-bg: #79aec8;
     --button-hover-bg: #609ab6;
-}
-
-html, body {
-    height: 100%;
 }
 
 body {
@@ -30,6 +30,11 @@ h1, h2, form {
 
 h2 {
     margin-left: 20px;
+}
+
+p {
+    margin-left: 10px;
+    font-size: 16px;
 }
 
 p, li {
@@ -75,10 +80,31 @@ label, input {
 
 /* link */
 
+div.link div.update-delete {
+    display: inline-block;
+}
+
+div.link {
+    width: 69em;
+}
+
 a.link {
     display: inline-block;
     margin-top: 15px;
     margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+div.update-delete {
+    display: inline-block;
+    float: right;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+a.update, a.delete {
+    font-size: 12px;
+    margin-left: 10px;
 }
 
 a:link, a:visited {
@@ -176,7 +202,7 @@ table.list {
 
 thead.list {
     display: table;
-    width: calc(100% - 1.0em);
+    width: calc(100% - 1.05em);
     text-align: left;
     border-top: 1px solid black;
     border-left: 1px solid black;
@@ -228,7 +254,6 @@ div.counter p {
 
 p.table-list {
     font-size: 18px;
-    margin-left: 10px;
 }
 
 ul.table-list {
@@ -248,6 +273,7 @@ ul.table-list li {
 }
 
 .icon-update, .icon-delete {
+    vertical-align: middle;
     width: 16px;
     height: 16px;
     display: inline-block;
@@ -273,17 +299,17 @@ ul.table-list li {
 }
 
 .icon-update {
-    background: url(../img/icon-update.svg) no-repeat;
+    background: url(../img/icons-update.svg) 0 0 no-repeat;
 }
 
 .icon-update:hover {
-    background: url(../img/icon-update-alt.svg) no-repeat;
+    background-position: 0 -16px;
 }
 
 .icon-delete {
-    background: url(../img/icon-delete.svg) no-repeat;
+    background: url(../img/icons-delete.svg) 0 0 no-repeat;
 }
 
 .icon-delete:hover {
-    background: url(../img/icon-delete-alt.svg) no-repeat;
+    background-position: 0 -16px;
 }
