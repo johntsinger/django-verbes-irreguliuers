@@ -11,6 +11,12 @@ def index(list_item, i):
         return None
 
 @register.filter
+def replace(item, characters):
+    if characters in item:
+        return item.replace(characters, " " + characters + " ")
+    return item
+
+@register.filter
 def count_done(item):
     return item.filter(done=True).count()
 
