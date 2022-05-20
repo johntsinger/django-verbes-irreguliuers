@@ -40,9 +40,9 @@
 </div>
 
 <div class="counter">
-    <p>Verbes testés : {{ table.verbes|count_done }}</p>
-    <p>Verbes réussis : {{ table.verbes|count_success }}</p>
-    <p>Verbes non testés : {{ table.verbes|count_remainders }}</p>
+    <p>Verbes testés : {{ table.table_verbes|count_done }}</p>
+    <p>Verbes réussis : {{ table.table_verbes|count_success }}</p>
+    <p>Verbes non testés : {{ table.table_verbes|count_remainders }}</p>
 </div>
 
 {% endblock %}
