@@ -2,7 +2,7 @@ import json
 from verbes_app.models import Verbe
 
 
-def get_results(request):
+def get_results(request, table):
     """Creates dictionary with the querydict send by request.POST"""
     results = {}
     exclude = ["csrfmiddlewaretoken", "done", "success"]
@@ -12,10 +12,11 @@ def get_results(request):
             # converts the json string list to list
             verbes_id = json.loads(request.POST.get('verbes_id'))
             verbes = []
-            # for id in list get the verbe 
-            for verbe_id in verbes_id:
-                verbe = Verbe.objects.get(id=verbe_id)
-                verbes.append(verbe)
+            # iterate through VerbeList, get verbelist object 
+            # that contains the verb if the id of the verb is in verbes_id
+            for verbelist_object in table.table_verbes.all():
+                if verbelist_object.verbe.id in verbes_id:
+                    verbes.append(verbelist_object)
             results['verbes'] = verbes
         else:
             if key not in exclude:
@@ -35,26 +36,26 @@ def verify_answer(results):
     """Verify user answers"""
     # set default value True for each verbs tense for each verbs objects
     correction = [[True, True, True] for i in range(len(results['verbes']))]
-    # set correction's value to False if it doesn't match with the verb's value
-    for i, verbe in enumerate(results['verbes']):
-        if verbe.present != results['present'][i]:
+    # set correction's value to False if it doesn't match with the verblist object's value
+    for i, verbelist_object in enumerate(results['verbes']):
+        if verbelist_object.verbe.present != results['present'][i]:
             correction[i][0] = False
         # split the verb if it has two forms
-        if '/' in verbe.preterit:
-            preterit = verbe.preterit.split('/')
+        if '/' in verbelist_object.verbe.preterit:
+            preterit = verbelist_object.verbe.preterit.split('/')
             if preterit[0] != results['preterit'][i] and \
                     preterit[1] != results['preterit'][i]:
                 correction[i][1] = False
         else:
-            if verbe.preterit != results['preterit'][i]:
+            if verbelist_object.verbe.preterit != results['preterit'][i]:
                 correction[i][1] = False
-        if '/' in verbe.participe_passe:
-            participe_passe = verbe.participe_passe.split('/')
+        if '/' in verbelist_object.verbe.participe_passe:
+            participe_passe = verbelist_object.verbe.participe_passe.split('/')
             if participe_passe[0] != results['participe_passe'][i] and \
                     participe_passe[1] != results['participe_passe'][i]:
                 correction[i][2] = False
         else:
-            if verbe.participe_passe != results['participe_passe'][i]:
+            if verbelist_object.verbe.participe_passe != results['participe_passe'][i]:
                 correction[i][2] = False
 
         # append a 4th value to correction 
