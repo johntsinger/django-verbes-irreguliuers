@@ -16,9 +16,19 @@ class Verbe(models.Model):
 
 class Table(models.Model):
     name = models.fields.CharField(max_length=30)
-    verbes = models.ManyToManyField(Verbe)
+    verbes = models.ManyToManyField(Verbe, related_name='tables', through='VerbeList')
     default = models.fields.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}'
-      
+
+
+class VerbeList(models.Model):
+    verbe = models.ForeignKey(Verbe, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name='table_verbes')
+    done = models.fields.BooleanField(default=False)
+    success = models.fields.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.verbe.present} {self.verbe.preterit} {self.verbe.participe_passe} \
+{self.verbe.francais}'
