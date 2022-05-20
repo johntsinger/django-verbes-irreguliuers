@@ -3,7 +3,7 @@ from django.core import serializers
 from django.shortcuts import render
 from django.shortcuts import redirect
 from verbes_app.functions import get_results, verify_answer
-from verbes_app.models import Verbe, Table
+from verbes_app.models import Verbe, Table, VerbeList
 from verbes_app.forms import TableForm, VerbeForm
 
 
@@ -95,19 +95,28 @@ def exercise(request, table_id):
         'verbes_id': verbes_id})
 
 def exercise_result(request, table_id):
+    table = Table.objects.get(id=table_id)
     # creates the dictionary of results
-    results = get_results(request)
+    results = get_results(request, table)
     # gets the correction (dict of booleans)
     correction = verify_answer(results)
     # set n to pass it to the context to creates a range object
     # needed to creates 10 rows in the template
     n = len(results['verbes'])
-
-    # modifies done and success attributes of verb object
+    # modifies done and success attributes of VerbeList object
+    # through related name in m2m third table (VerbeList)
+    # and modifies done and success attributes of Verbe object
     # saves the modification in the db
-    for i, verbe in enumerate(results['verbes']):
+    for i, verbelist_object in enumerate(results['verbes']):
+        # get the Verbe object corresponding to the verbe_list_object.verbe
+        verbe = Verbe.objects.get(id=verbelist_object.verbe.id)
+        # modifies the VerbeList object done attribute
+        verbelist_object.done = True
+        # modifies the Verbe object done attribute
         verbe.done = True
+        verbelist_object.success = correction[i][3]
         verbe.success = correction[i][3]
+        verbelist_object.save()
         verbe.save()
 
     return render(request,
