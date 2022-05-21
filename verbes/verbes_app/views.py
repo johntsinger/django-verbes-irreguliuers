@@ -13,6 +13,19 @@ def verbe_list(request):
         "verbes_app/verbe_list.html",
         {"verbes": verbes})
 
+def reset_all(request):
+    verbes = Verbe.objects.all()
+    if request.method == 'POST':
+        if 'reset' in request.POST:
+            for verbe in verbes:
+                verbe.done = False
+                verbe.success = False
+                verbe.save()
+        return redirect('verbe-list')
+
+    return render(request,
+        'verbes_app/reset_all.html')
+
 def table_detail(request, table_id):
     table = Table.objects.get(id=table_id)
     return render(request,
@@ -71,12 +84,25 @@ def table_delete(request, table_id):
     if request.method == 'POST':
         if 'supprimer' in request.POST:
             table.delete()
-            return redirect('table-list')
-        else:
-            return redirect('table-list')
+
+        return redirect('table-list')
 
     return render(request,
         'verbes_app/table_delete.html',
+        {'table': table})
+
+def table_reset(request, table_id):
+    table = Table.objects.get(id=table_id)
+    if request.method == 'POST':
+        if 'reset' in request.POST:
+            for verbelist_object in table.table_verbes.all():
+                verbelist_object.done = False
+                verbelist_object.success = False
+                verbelist_object.save()
+        return redirect('table-detail', table_id)
+
+    return render(request,
+        'verbes_app/table_reset.html',
         {'table': table})
 
 def exercise(request, table_id):

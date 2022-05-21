@@ -23,11 +23,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('verbes/', views.verbe_list, name='verbe-list'),
+    path('verbes/reset', views.reset_all, name='reset-all'),
     path('verbes/table/<int:table_id>/', views.table_detail, name='table-detail'),
     path('verbes/table/', views.table_list, name='table-list'),
     path('verbes/table/add/', views.table_create, name='table-create'),
     path('verbes/table/<int:table_id>/change', views.table_update, name='table-update'),
     path('verbes/table/<int:table_id>/delete', views.table_delete, name='table-delete'),
+    path('verbes/table/<int:table_id>/reset', views.table_reset, name='table-reset'),
     path('verbes/table/<int:table_id>/exercise/', views.exercise, name='exercise'),
     path('verbes/table/<int:table_id>/exercise/result/', views.exercise_result,
          name='exercise-result')

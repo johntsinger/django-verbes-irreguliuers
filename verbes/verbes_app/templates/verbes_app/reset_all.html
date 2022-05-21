@@ -1,0 +1,17 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+<h1>Réinitialiser tous les verbes</h1>
+
+<p>Etes-vous sûr de vouloir réinitialiser tous les verbes ?
+<p>La progression sera réinitialiser !</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="button" type="submit" value="Reset" name="reset">
+    <!-- Ajout d'un bouton de formulaire annuler -->
+    <input class="button" type="submit" value="Annuler" name="annuler">
+</form>
+
+{% endblock %}
