@@ -88,7 +88,7 @@ div.link {
     width: 69em;
 }
 
-a.link {
+a.link, p.link {
     display: inline-block;
     margin-top: 15px;
     margin-bottom: 10px;
@@ -102,7 +102,7 @@ div.update-delete {
     margin-left: 10px;
 }
 
-a.update, a.delete {
+a.update, a.delete, a.reset {
     font-size: 12px;
     margin-left: 10px;
 }
@@ -186,10 +186,6 @@ div.table-container {
     width: 70em;
     height: 55em;
     margin-top: 20px;
-}
-
-div.principal {
-    margin-top: 40px;
 }
 
 table.list {
