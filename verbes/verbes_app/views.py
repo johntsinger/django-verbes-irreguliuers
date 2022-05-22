@@ -17,7 +17,7 @@ def reset_all(request):
     verbes = Verbe.objects.all()
     if request.method == 'POST':
         if 'reset' in request.POST:
-            for verbe in verbes:
+            for verbe in verbes.filter(done=True):
                 verbe.done = False
                 verbe.success = False
                 verbe.save()
@@ -95,7 +95,7 @@ def table_reset(request, table_id):
     table = Table.objects.get(id=table_id)
     if request.method == 'POST':
         if 'reset' in request.POST:
-            for verbelist_object in table.table_verbes.all():
+            for verbelist_object in table.table_verbes.filter(done=True):
                 verbelist_object.done = False
                 verbelist_object.success = False
                 verbelist_object.save()
@@ -148,4 +148,4 @@ def exercise_result(request, table_id):
     return render(request,
         "verbes_app/exercise_result.html",
         {'results': results, 'n': range(n), 'correction': correction,
-         'table_id': table_id})
+         'table_id': table_id, 'table': table})

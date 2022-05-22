@@ -12,11 +12,13 @@ def get_results(request, table):
             # converts the json string list to list
             verbes_id = json.loads(request.POST.get('verbes_id'))
             verbes = []
-            # iterate through VerbeList, get verbelist object 
-            # that contains the verb if the id of the verb is in verbes_id
-            for verbelist_object in table.table_verbes.all():
-                if verbelist_object.verbe.id in verbes_id:
-                    verbes.append(verbelist_object)
+            for verbe_id in verbes_id:
+                # filter table.table_verbes by verbe_id 
+                # return a queryset with a unique element the verbelist_object
+                # and get this element using [0]
+                verbelist_object = table.table_verbes.filter(
+                    verbe_id=verbe_id)[0]
+                verbes.append(verbelist_object)
             results['verbes'] = verbes
         else:
             if key not in exclude:
