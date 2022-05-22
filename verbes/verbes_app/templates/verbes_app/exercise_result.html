@@ -26,6 +26,6 @@
 </table>
 
 <a href="{% url 'exercise' table_id %}"><button class="button">Réésayer</button></a>
-<a href="{% url 'table-list' %}"><button class="button">Retour au listes</button></a>
+<a title="Retour a la liste {{ table.name }}" href="{% url 'table-detail' table_id %}"><button class="button">Retour</button></a>
 
 {% endblock %}
