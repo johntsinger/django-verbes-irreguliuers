@@ -1,0 +1,86 @@
+@import url(fonts.css);
+
+body {
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+/* h1 */
+
+h1 {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+/* small */
+
+small {
+    font-size: 13px;
+}
+
+/* nav */
+
+nav {
+    background-color: #e3f2fd;
+}
+
+/* color success and unsuccess verbs */
+
+.success {
+    color: green;
+}
+
+.unsuccess {
+    color: red;
+}
+
+/* change nav-link opacity */
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,.5);
+}
+
+/* decoration active */
+
+.active {
+    text-decoration: underline;
+    text-decoration-color: rgba(0,0,0,0.4);
+    text-underline-offset: 3px;
+}
+
+/* dataTables js module */
+
+.dataTables_scroll {
+    border: 1px solid black;
+}
+
+.dataTables_filter input {
+    height: 25px;
+}
+
+.dataTables_wrapper {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: unset;
+    text-align: unset;
+    margin-bottom: 1rem;
+}
+
+/* navbar dropdown */
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+    
