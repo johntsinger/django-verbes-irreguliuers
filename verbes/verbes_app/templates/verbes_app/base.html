@@ -26,27 +26,27 @@
                         <li class="nav-item" style="list-style: none;">
                             <a class="nav-link {% block nav_item_verbes_list %}{% endblock %}" href="{% url 'verbe-list' %}">Tous les verbes</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" style="list-style: none;">
                             <a data-target="{% url 'table-list' %}" href="{% url 'table-list' %}" id="menu" data-bs-hover="dropdown" class="nav-link dropdown-toggle {% block nav_item_table_list %}{% endblock %}" role="button" data-bs-display="static">Listes</a>
                             <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" data-bs-hover="dropdown" href="#">Listes de base</a>
+                                <li class="dropdown-submenu" style="list-style: none;">
+                                    <span class="dropdown-item dropdown-toggle" data-bs-hover="dropdown" style="cursor: default;">Listes de base</span>
                                     <ul class="dropdown-menu">
                                         {% for table in tables %}
                                         {% if table.default is True %}
-                                        <li>
+                                        <li style="list-style: none;">
                                             <a class="dropdown-item" href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
                                         </li>
                                         {% endif %}
                                         {% endfor %}
                                     </ul>
                                 </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" data-bs-hover="dropdown" class="dropdown-item dropdown-toggle">Listes personnelles</a>
+                                <li class="dropdown-submenu" style="list-style: none;">
+                                    <span data-bs-hover="dropdown" class="dropdown-item dropdown-toggle" style="cursor: default;">Listes personnelles</span>
                                     <ul class="dropdown-menu">
                                         {% for table in tables %}
                                         {% if not table.default %}
-                                        <li>
+                                        <li style="list-style: none;">
                                             <div class="icons-container ">
                                             <a class="dropdown-item" href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
                                         </li>
