@@ -1,45 +1,40 @@
-{% extends 'verbes_app/base.html' %}
+{% extends 'verbes_app/base_list.html' %}
 
 {% load custom_filters %}
 
-{% block content %}
+{% block nav_item_verbes_list %}active{% endblock %}
 
-<h1>Tous les verbes <div class="annotations">({{ verbes.count }} verbes)</div></h1>
+{% block h1_content %}
+    Tous les verbes <small>({{ verbes.count }} verbes)</small>
+{% endblock %}
 
-<div class="link">
-    <p class="link">Liste contenant tous les verbes irréguliers anglais</p>
-    <div class="update-delete">
-        <a class="reset" href="{% url 'reset-all' %}" title="Réinitialiser la liste">[reset]</a>
-    </div>
-</div>
+{% block info_content_left %}
+    Liste contenant tous les verbes irréguliers anglais
+{% endblock %}
 
-<div class="table-container principal">
-    <table class="list">
-        <thead class="list">
-            <tr>
-                <th class="list">Present</th>
-                <th class="list">Preterit</th>
-                <th class="list">Present perfect</th>
-                <th class="list">Français</th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            {% for verbe in verbes %} 
-            <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
-                <td class="list">{{ verbe.present }}</td>
-                <td class="list">{{ verbe.preterit|replace:"/" }}</td>
-                <td class="list">{{ verbe.participe_passe|replace:"/" }}</td>
-                <td class="list">{{ verbe.francais }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+{% block info_content_right %}
+    <a href="{% url 'reset-all' %}" title="Réinitialiser la liste"><small>[reset]</small></a>
+{% endblock %}
 
-<div class="counter">
-    <p>Verbes testés : {{ verbes|count_done }}</p>
-    <p>Verbes réussis : {{ verbes|count_success }}</p>
-    <p>Verbes non testés : {{ verbes|count_remainders }}</p>
-</div>
+{% block tbody %}
+    {% for verbe in verbes %} 
+    <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
+        <td>{{ verbe.present }}</td>
+        <td>{{ verbe.preterit|replace:"/" }}</td>
+        <td>{{ verbe.participe_passe|replace:"/" }}</td>
+        <td>{{ verbe.francais }}</td>
+    </tr>
+    {% endfor %}
+{% endblock %}
 
+{% block tested_verbs %}
+    {{ verbes|count_done }}
+{% endblock %}
+
+{% block successed_verbs %}
+    {{ verbes|count_success }}
+{% endblock %}
+
+{% block not_tested_verbs %}
+    {{ verbes|count_remainders }}
 {% endblock %}

@@ -1,50 +1,46 @@
-{% extends 'verbes_app/base.html' %}
+{% extends 'verbes_app/base_list.html' %}
 
-{% block content %}
+{% block nav_item_table_list %}active{% endblock %}
 
 {% load custom_filters %}
 
-<h1> Liste : {{ table.name }} <div class="annotations">({{ table.verbes.count }} verbes)</div></h1>
+{% block h1_content %}
+    Liste : {{ table.name }} <small>({{ table.verbes.count }} verbes)</small>
+{% endblock %}
 
-<div class=link>
+{% block info_content_left %}
     <a class="link" href="{% url 'exercise' table.id %}">S'entrainer sur ces verbes</a>
-    <div class="update-delete">
-        {% if not table.default %}
-        <a class="update" href="{% url 'table-update' table.id %}" title="Modifier cette liste">[modifier]</a>
-        <a class="delete" href="{% url 'table-delete' table.id %}" title="Supprimer cette liste">[supprimer]</a>
-        {% endif %}
-        <a class="reset" href="{% url 'table-reset' table.id %}" title="Réinitialiser cette liste">[reset]</a>
-    </div>
-    
-</div>
+{% endblock %}
 
-<div class="table-container">
-    <table class="list">
-        <thead class="list">
-            <tr>
-                <th class="list">Present</th>
-                <th class="list">Preterit</th>
-                <th class="list">Present perfect</th>
-                <th class="list">Français</th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            {% for verbelist_object in table.table_verbes.all %} 
-            <tr class="{% if verbelist_object.success is True %} success {% elif verbelist_object.success is False and verbelist_object.done is True %} unsuccess {% endif %}">
-                <td class="list">{{ verbelist_object.verbe.present }}</td>
-                <td class="list">{{ verbelist_object.verbe.preterit|replace:"/" }}</td>
-                <td class="list">{{ verbelist_object.verbe.participe_passe|replace:"/" }}</td>
-                <td class="list">{{ verbelist_object.verbe.francais }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+{% block info_content_right %}
+    {% if not table.default %}
+    <a href="{% url 'table-update' table.id %}" title="Modifier cette liste"><small>[modifier]</a>
+    <a href="{% url 'table-delete' table.id %}" title="Supprimer cette liste"><small>[supprimer]</a>
+    {% endif %}
+    <a href="{% url 'table-reset' table.id %}" title="Réinitialiser cette liste"><small>[reset]</small>
+    </small>
+    </small></a>
+{% endblock %}
 
-<div class="counter">
-    <p>Verbes testés : {{ table.table_verbes|count_done }}</p>
-    <p>Verbes réussis : {{ table.table_verbes|count_success }}</p>
-    <p>Verbes non testés : {{ table.table_verbes|count_remainders }}</p>
-</div>
+{% block tbody %}
+    {% for verbelist_object in table.table_verbes.all %} 
+    <tr class="{% if verbelist_object.success is True %} success {% elif verbelist_object.success is False and verbelist_object.done is True %} unsuccess {% endif %}">
+        <td>{{ verbelist_object.verbe.present }}</td>
+        <td>{{ verbelist_object.verbe.preterit|replace:"/" }}</td>
+        <td>{{ verbelist_object.verbe.participe_passe|replace:"/" }}</td>
+        <td>{{ verbelist_object.verbe.francais }}</td>
+    </tr>
+    {% endfor %}
+{% endblock %}
 
+{% block tested_verbs %}
+    {{ table.table_verbes|count_done }}
+{% endblock %}
+
+{% block successed_verbs %}
+    {{ table.table_verbes|count_success }}
+{% endblock %}
+
+{% block not_tested_verbs %}
+    {{ table.table_verbes|count_remainders }}
 {% endblock %}
