@@ -9,9 +9,10 @@ from verbes_app.forms import TableForm, VerbeForm
 
 def verbe_list(request):
     verbes = Verbe.objects.all()
+    tables = Table.objects.all()
     return render(request,
         "verbes_app/verbe_list.html",
-        {"verbes": verbes})
+        {"verbes": verbes, "tables": tables})
 
 def reset_all(request):
     verbes = Verbe.objects.all()
@@ -27,10 +28,11 @@ def reset_all(request):
         'verbes_app/reset_all.html')
 
 def table_detail(request, table_id):
+    tables = Table.objects.all()
     table = Table.objects.get(id=table_id)
     return render(request,
         "verbes_app/table_detail.html",
-        {"table": table})
+        {"table": table, "tables": tables})
 
 def table_list(request):
     tables = Table.objects.all()
