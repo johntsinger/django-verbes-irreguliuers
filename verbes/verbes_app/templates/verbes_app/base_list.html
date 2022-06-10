@@ -3,14 +3,12 @@
 {% block content %}
 
     {% block info %}
-    <div class="mx-4 mt-4">
-        <div class="row">
-            <div class="col-8">
-                <p>{% block info_content_left %}{% endblock %}</p>
-            </div>
-            <div class="col-4 align-self-sm-start align-self-center text-end">
-                {% block info_content_right %}{% endblock %}
-            </div>
+    <div class="row">
+        <div class="col-8">
+            <p>{% block info_content_left %}{% endblock %}</p>
+        </div>
+        <div class="col-4 align-self-sm-start align-self-center text-end">
+            {% block info_content_right %}{% endblock %}
         </div>
     </div>
     {% endblock %}
@@ -33,7 +31,7 @@
 
     {% block counter %}
     <div class="mt-3">
-        <p class="d-inline-block ms-4 me-3">Verbes testés : {% block tested_verbs %}{% endblock %}</p>
+        <p class="d-inline-block me-3">Verbes testés : {% block tested_verbs %}{% endblock %}</p>
         <p class="d-inline-block me-3">Verbes réussis : {% block successed_verbs %}{% endblock %}</p>
         <p class="d-inline-block me-3">Verbes non testés : {% block not_tested_verbs %}{% endblock %}</p>
     </div>

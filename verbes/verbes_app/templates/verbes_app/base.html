@@ -27,11 +27,12 @@
                             <a class="nav-link {% block nav_item_verbes_list %}{% endblock %}" href="{% url 'verbe-list' %}">Tous les verbes</a>
                         </li>
                         <li class="nav-item dropdown" style="list-style: none;">
-                            <a data-target="{% url 'table-list' %}" href="{% url 'table-list' %}" id="menu" data-bs-hover="dropdown" class="nav-link dropdown-toggle {% block nav_item_table_list %}{% endblock %}" role="button" data-bs-display="static">Listes</a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu" style="list-style: none;">
-                                    <span class="dropdown-item dropdown-toggle" data-bs-hover="dropdown" style="cursor: default;">Listes de base</span>
-                                    <ul class="dropdown-menu">
+                            <span id="menu" data-bs-toggle="dropdown" data-bs-auto-close="outside" class="nav-link dropdown-toggle {% block nav_item_table_list %}{% endblock %}" role="button" data-bs-display="static">Listes</span>
+                            <ul class="dropdown-menu top-level fade-down">
+                                <li style="list-style: none;"><a class="dropdown-item" href="{% url 'table-list' %}">Toutes les listes</a></li>
+                                <li class="dropdown-submenu dropend" style="list-style: none;">
+                                    <span class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" style="cursor: default;">Listes de base</span>
+                                    <ul class="dropdown-menu fade-down">
                                         {% for table in tables %}
                                         {% if table.default is True %}
                                         <li style="list-style: none;">
@@ -41,9 +42,9 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                                <li class="dropdown-submenu" style="list-style: none;">
-                                    <span data-bs-hover="dropdown" class="dropdown-item dropdown-toggle" style="cursor: default;">Listes personnelles</span>
-                                    <ul class="dropdown-menu">
+                                <li class="dropdown-submenu dropend" style="list-style: none;">
+                                    <span  class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" style="cursor: default;">Listes personnelles</span>
+                                    <ul class="dropdown-menu fade-down">
                                         {% for table in tables %}
                                         {% if not table.default %}
                                         <li style="list-style: none;">
@@ -54,6 +55,8 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
+                                <li style="list-style: none;"><hr class="dropdown-divider"></li>
+                                <li style="list-style: none;"><a class="dropdown-item" href="{% url 'table-create' %}">Créer une liste</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -66,13 +69,15 @@
         <h1 class="ms-3 mt-4">{% block h1_content %}{% endblock %}</h1>
         {% endblock %}
 
+        <div class="mx-4 mt-4">
         {% block content %}{% endblock %}
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="{% static 'verbes_app/js/dataTables.js' %}"></script>
-
+        {% block js %}{% endblock %}
     </body>
 </html>
