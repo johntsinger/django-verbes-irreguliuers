@@ -1,14 +1,19 @@
-{% extends 'verbes_app/base.html' %}
+{% extends 'verbes_app/base_list.html' %}
 
-{% block content %}
+{% block nav_item_table_list %}active{% endblock %}
 
-<h1>Listes des verbes disponnibles</h1>
+{% block h1_content %}
+    Listes des verbes disponnibles
+{% endblock %}
 
-<a class="link" href="{% url 'table-create' %}">Créer une nouvelle liste</a>
+{% block info_content_left %}
+    <a href="{% url 'table-create' %}">Créer une nouvelle liste</a>
+{% endblock %}
 
-<p class="table-list">Listes de base :</p>
+{% block table %}
+<p>Listes de base :</p>
 
-<ul class="table-list">
+<ul>
     {% for table in tables %}
     {% if table.default is True %}
     <li>
@@ -18,9 +23,9 @@
     {% endfor %}
 </ul>
 
-<p class="table-list">Listes personnelles :</p>
+<p>Listes personnelles :</p>
 
-<ul class="table-list">
+<ul>
     {% for table in tables %}
     {% if not table.default %}
     <li>
@@ -33,5 +38,6 @@
     {% endif %}
     {% endfor %}
 </ul>
-
 {% endblock %}
+
+{% block counter %}{% endblock %}
