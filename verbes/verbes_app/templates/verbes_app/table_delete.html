@@ -1,17 +1,12 @@
-{% extends 'verbes_app/base.html' %}
+{% extends 'verbes_app/base_options.html' %}
 
-{% block content %}
+{% block h1_content %}
+    Supprimer la liste {{ table.name }}
+{% endblock %}
 
-<h1>Supprimer la liste {{ table.name }}</h1>
-
+{% block info %}
 <p>Etes-vous sûr de vouloir supprimer la liste : <strong>{{ table.name }}</strong> ?</p>
 <p>La liste sera supprimer définitivement !</p>
-
-<form action="" method="post">
-    {% csrf_token %}
-    <input class="button" type="submit" value="Supprimer" name="supprimer">
-    <!-- Ajout d'un bouton de formulaire annuler -->
-    <input class="button" type="submit" value="Annuler" name="annuler">
-</form>
-
 {% endblock %}
+
+{% block value %}Supprimer{% endblock %}

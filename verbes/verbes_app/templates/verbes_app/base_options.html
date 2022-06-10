@@ -1,0 +1,21 @@
+{% extends 'verbes_app/base.html' %}
+
+{% block content %}
+
+{% block info %}{% endblock %}
+
+    {{ form.media }}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="{% block div-margin-top %}mt-4{% endblock %}">
+            <input class="btn me-3" type="submit" value="{% block value %}Envoyer{% endblock %}" name="envoyer">
+            <input class="btn me-3" type="submit" formnovalidate value= "Annuler" name="annuler">
+        </div>
+
+    </form>
+
+{% endblock %}
+
