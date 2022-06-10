@@ -5,6 +5,7 @@ from verbes_app.models import Table, Verbe
 
 class TableForm(forms.ModelForm):
     class Media:
+        extend = False
         css = {
             'all': ('admin/css/base.css', 'admin/css/forms.css',
                     'verbes_app/css/custom_forms.css',
@@ -20,6 +21,9 @@ class TableForm(forms.ModelForm):
     class Meta:
         model = Table
         exclude = ('default',)
+        labels = {
+            'name': 'Nom de la liste',
+        }
         widgets = {
             'verbes': FilteredSelectMultiple('verbes', is_stacked=False)
         }
