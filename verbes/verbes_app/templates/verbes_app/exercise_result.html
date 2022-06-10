@@ -1,31 +1,40 @@
 {% extends 'verbes_app/base.html' %}
 
-{% block content %}
-
 {% load custom_filters %}
 
-<h1>Résultat de l'exercice</h1>
+{% block h1_content %}
+    Résultat de l'exercice
+{% endblock %}
 
-<table class="results">
-    <thead>
-        <tr>
-            {% for key, values in results.items %}
-                <th class="results">{{ key }}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for i in n %}
+{% block content %}
+
+<h2>Liste de verbes : {{ table.name }}</h2>
+
+<div class="mt-4" style="max-width: 900px;">
+    <table class="table" style="border-spacing: 1rem;">
+        <thead>
+            <tr>
+                <th class="col-2 text-center">Present</th>
+                <th class="col-2 text-center">Preterit</th>
+                <th class="col-2 text-center">Present perfect</th>
+                <th class="col-3 text-center">Correction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in n %}
             <tr>
                 {% for key, values in results.items %}
-                    <td class="results {% if correction|index:i|index:forloop.counter0 is not True %} unsuccess {% else %} success {% endif %}">{{ values|index:i }}</td>
+                <td class="text-center {% if correction|index:i|index:forloop.counter0 is not True %} unsuccess {% else %} success {% endif %}">{{ values|index:i }}</td>
                 {% endfor %}
             </tr> 
-        {% endfor %}
-    </tbody>
-</table>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-<a href="{% url 'exercise' table_id %}"><button class="button">Réésayer</button></a>
-<a title="Retour a la liste {{ table.name }}" href="{% url 'table-detail' table_id %}"><button class="button">Retour</button></a>
+<div class="mt-4">
+    <a href="{% url 'exercise' table_id %}"><button class="btn me-3">Réésayer</button></a>
+    <a title="Retour a la liste {{ table.name }}" href="{% url 'table-detail' table_id %}"><button class="btn">Retour</button></a>
+</div>
 
 {% endblock %}
