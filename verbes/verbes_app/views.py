@@ -16,7 +16,7 @@ def verbe_list(request):
 def reset_all(request):
     verbes = Verbe.objects.all()
     if request.method == 'POST':
-        if 'reset' in request.POST:
+        if 'envoyer' in request.POST:
             for verbe in verbes.filter(done=True):
                 verbe.done = False
                 verbe.success = False
@@ -82,7 +82,7 @@ def table_update(request, table_id):
 def table_delete(request, table_id):
     table = Table.objects.get(id=table_id)
     if request.method == 'POST':
-        if 'supprimer' in request.POST:
+        if 'envoyer' in request.POST:
             table.delete()
 
         return redirect('table-list')
@@ -94,7 +94,7 @@ def table_delete(request, table_id):
 def table_reset(request, table_id):
     table = Table.objects.get(id=table_id)
     if request.method == 'POST':
-        if 'reset' in request.POST:
+        if 'envoyer' in request.POST:
             for verbelist_object in table.table_verbes.filter(done=True):
                 verbelist_object.done = False
                 verbelist_object.success = False
