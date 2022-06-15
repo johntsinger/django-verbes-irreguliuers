@@ -13,6 +13,7 @@
     --button-fg: #fff;
     --button-bg: #79aec8;
     --button-hover-bg: #609ab6;
+    --button-active-bg: rgb(13 110 253 / 25%);
 }
 
 body {
@@ -81,6 +82,7 @@ a:focus, a:hover {
 
 /* dataTables js module */
 
+
 .dataTables_scroll {
     border: 1px solid black;
 }
@@ -132,25 +134,15 @@ a.dropdown-item:focus, a.dropdown-item:hover {
 
 /* icons table_list */
 
-.icons-container {
-    width: fit-content;
-    padding-right: 15px;
-}
-
 .icon-update, .icon-delete {
-    vertical-align: middle;
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    text-indent: -3000px;
-    overflow: hidden;
-    cursor: pointer;
-    opacity: 1;
-}
-
-.icons-container .icon-update,
-.icons-container .icon-delete {
-    visibility: hidden;
+        vertical-align: middle;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        text-indent: -3000px;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 1;
 }
 
 .icons-container:hover .icon-update,
@@ -158,8 +150,7 @@ a.dropdown-item:focus, a.dropdown-item:hover {
     visibility: visible;
 }
 
-.icon-update, .icon-update:hover,
-.icon-delete, .icon-delete:hover {
+.icon-update {
     margin-left: 10px;
 }
 
@@ -167,23 +158,28 @@ a.dropdown-item:focus, a.dropdown-item:hover {
     background: url(../img/icons-update.svg) 0 0 no-repeat;
 }
 
-.icon-update:hover {
-    background-position: 0 -16px;
-    transition-property: background-position;
-    transition-duration: 0.2s;
-}
-
 .icon-delete {
     background: url(../img/icons-delete.svg) 0 0 no-repeat;
 }
 
-.icon-delete:hover {
-    background-position: 0 -16px;
-    transition-property: background-position;
-    transition-duration: 0.2s;
+/* only for device that can hover */
+@media (hover: hover) {
+
+    .icons-container .icon-update,
+    .icons-container .icon-delete {
+        visibility: hidden;
+    }
+
+    .icon-update:hover, .icon-delete:hover {
+        background-position: 0 -16px;
+        transition-property: background-position;
+        transition-duration: 0.2s;
+    }
 }
 
-/* button */
+/* BUTTONS */
+
+/* global */
 
 .btn {
     font-size: 13px;
@@ -198,7 +194,32 @@ a.dropdown-item:focus, a.dropdown-item:hover {
     cursor: pointer;
 }
 
-.btn:active, .btn:focus, .btn:hover {
+.btn:hover {
     background: var(--button-hover-bg);
     color: var(--button-fg);
+}
+
+/* button-group switcher */
+
+.switcher, .switcher:focus {
+    border: 1px solid black;
+    width: 130px;
+    height: 25px;
+    box-shadow: none;
+    padding: 0 0;
+}
+
+.switcher:active, .switcher:hover,
+.switcher.active:focus {
+    background: var(--button-hover-bg);
+    color: var(--button-fg);
+    outline: none;
+}
+
+.switcher.active, .switcher.active:focus {
+    background: #1a5bc4;
+    /*background: var(--button-hover-bg);*/
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--button-active-bg);
 }

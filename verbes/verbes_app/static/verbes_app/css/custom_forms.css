@@ -75,6 +75,10 @@ input[type='submit'] {
     box-shadow: 1px 1px 0px black;
 }
 
+option {
+    white-space: normal;
+}
+
 .nav-item {
     font-size: 16px;
 }
