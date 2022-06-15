@@ -13,6 +13,14 @@
     </div>
     {% endblock %}
 
+    {% block buttons %}
+    <div class="btn-group flex-wrap mt-3 mt-md-0 ms-0 ms-md-4" role="group" aria-label="Basic checkbox toggle button group" id="button-group">
+        <button type="button" class="btn switcher mb-3 mb-md-0" id="success" title="Afficher les verbes réussis">verbes réussis</button>
+        <button type="button" class="btn switcher mb-3 mb-md-0" id="unsuccess" title="Afficher les verbes loupés">verbes loupés</button>
+        <button type="button" class="btn switcher" id="not-done" title="Afficher les verbes non testés">verbes non testés</button>
+    </div>
+    {% endblock %}
+
     {% block table %}
     <table id="example" class="cell-border" style="width:100%;">
         <thead>
