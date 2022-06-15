@@ -10,6 +10,8 @@
     <a href="{% url 'table-create' %}">Créer une nouvelle liste</a>
 {% endblock %}
 
+{% block buttons %}{% endblock %}
+
 {% block table %}
 <p>Listes de base :</p>
 
@@ -29,10 +31,10 @@
     {% for table in tables %}
     {% if not table.default %}
     <li>
-        <div class="icons-container">
+        <div class="icons-container d-inline-block me-3">
             <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
-            <a class='icon-update' href="{% url 'table-update' table.id %}" title="Modifier">Update</a>
-            <a class="icon-delete" href="{% url 'table-delete' table.id %}" title="Supprimer">Delete</a>
+            <a class="icon-update me-2" href="{% url 'table-update' table.id %}" title="Modifier">Update</a>
+            <a class="icon-delete me-2" href="{% url 'table-delete' table.id %}" title="Supprimer">Delete</a>
         </div>
     </li>
     {% endif %}
