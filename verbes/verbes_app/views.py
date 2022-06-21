@@ -109,12 +109,13 @@ def exercise(request, table_id):
     table = Table.objects.get(id=table_id)
     # gets 10 random items of table.verbes
     verbes_list = list(table.verbes.all())
-    verbes = sample(verbes_list, 10 if len(verbes_list) >= 10 else len(verbes_list))
+    verbes = sample(verbes_list,
+        10 if len(verbes_list) >= 10 else len(verbes_list))
     # creates list of verbes id
     # used in the hidden input to get it in request.POST
     verbes_id = [verbe.id for verbe in verbes]
     form = VerbeForm()
-                 
+
     return render(request,
         "verbes_app/exercise.html",
         {"table": table, "verbes": verbes, "form": form, 

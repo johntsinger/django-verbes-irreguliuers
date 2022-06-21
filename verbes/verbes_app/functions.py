@@ -38,7 +38,8 @@ def verify_answer(results):
     """Verify user answers"""
     # set default value True for each verbs tense for each verbs objects
     correction = [[True, True, True] for i in range(len(results['verbes']))]
-    # set correction's value to False if it doesn't match with the verblist object's value
+    # set correction's value to False if it doesn't match with the verblist 
+    # object's value
     for i, verbelist_object in enumerate(results['verbes']):
         if verbelist_object.verbe.present != results['present'][i]:
             correction[i][0] = False
@@ -57,7 +58,8 @@ def verify_answer(results):
                     participe_passe[1] != results['participe_passe'][i]:
                 correction[i][2] = False
         else:
-            if verbelist_object.verbe.participe_passe != results['participe_passe'][i]:
+            if verbelist_object.verbe.participe_passe != \
+                    results['participe_passe'][i]:
                 correction[i][2] = False
 
         # append a 4th value to correction 
