@@ -86,3 +86,10 @@ option {
 .dropdown-item {
     font-size: 14px;
 }
+
+@media (max-width: 819px) {
+    .selector {
+        display: flex;
+        flex-direction: column;
+    }
+}

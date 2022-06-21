@@ -164,7 +164,7 @@ a.selector-chooseall-not-done {
     display: block; /* ADDED */
     margin-bottom: 10px; /* ADDED */
     padding: 0 18px 0 0;
-    background: url(../img/selector-icons.svg) 70% -160px no-repeat;
+    background: url(../img/selector-icons.svg) 75% -160px no-repeat;
     cursor: default;
 }
 
@@ -172,7 +172,7 @@ a.selector-chooseall-not-done {
 a.active.selector-chooseall:focus, a.active.selector-chooseall:hover,
 a.active.selector-chooseall-false:focus, a.active.selector-chooseall-false:hover,
 a.active.selector-chooseall-not-done:focus, a.active.selector-chooseall-not-done:hover {
-    background-position: 70% -176px;
+    background-position: 75% -176px;
 }
 
 /* Modified */
@@ -181,7 +181,7 @@ a.selector-clearall-not-done {
     display: block; /* ADDED */
     margin-bottom: 10px; /* ADDED */
     padding: 0 0 0 18px;
-    background: url(../img/selector-icons.svg) 29% -128px no-repeat;
+    background: url(../img/selector-icons.svg) 25% -128px no-repeat;
     cursor: default;
 }
 
@@ -189,7 +189,7 @@ a.selector-clearall-not-done {
 a.active.selector-clearall:focus, a.active.selector-clearall-false:focus,
 a.active.selector-clearall-not-done:focus, a.active.selector-clearall:hover,
 a.active.selector-clearall-false:hover, a.active.selector-clearall-not-done:hover {
-    background-position: 29% -144px;
+    background-position: 25% -144px;
 }
 
 /* STACKED SELECTORS */
