@@ -122,8 +122,9 @@
 a.selector-chooseall, a.selector-clearall,
 a.selector-chooseall-false, a.selector-chooseall-not-done,
 a.selector-clearall-false, a.selector-clearall-not-done {
-    display: inline-block;
+    display: block;
     height: 16px;
+    width: fit-content;
     text-align: center;
     margin: 1px auto 3px;
     overflow: hidden;
@@ -161,10 +162,9 @@ a.active.selector-clearall-false:hover, a.active.selector-clearall-not-done:hove
 /* Modified */
 a.selector-chooseall, a.selector-chooseall-false,
 a.selector-chooseall-not-done {
-    display: block; /* ADDED */
     margin-bottom: 10px; /* ADDED */
     padding: 0 18px 0 0;
-    background: url(../img/selector-icons.svg) 75% -160px no-repeat;
+    background: url(../img/selector-icons.svg) right -160px no-repeat;
     cursor: default;
 }
 
@@ -172,16 +172,15 @@ a.selector-chooseall-not-done {
 a.active.selector-chooseall:focus, a.active.selector-chooseall:hover,
 a.active.selector-chooseall-false:focus, a.active.selector-chooseall-false:hover,
 a.active.selector-chooseall-not-done:focus, a.active.selector-chooseall-not-done:hover {
-    background-position: 75% -176px;
+    background-position: right -176px;
 }
 
 /* Modified */
 a.selector-clearall, a.selector-clearall-false,
 a.selector-clearall-not-done {
-    display: block; /* ADDED */
     margin-bottom: 10px; /* ADDED */
     padding: 0 0 0 18px;
-    background: url(../img/selector-icons.svg) 25% -128px no-repeat;
+    background: url(../img/selector-icons.svg) left -128px no-repeat;
     cursor: default;
 }
 
@@ -189,7 +188,7 @@ a.selector-clearall-not-done {
 a.active.selector-clearall:focus, a.active.selector-clearall-false:focus,
 a.active.selector-clearall-not-done:focus, a.active.selector-clearall:hover,
 a.active.selector-clearall-false:hover, a.active.selector-clearall-not-done:hover {
-    background-position: 25% -144px;
+    background-position: left -144px;
 }
 
 /* STACKED SELECTORS */
