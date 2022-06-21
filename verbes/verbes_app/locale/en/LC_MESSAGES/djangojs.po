@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-21 09:24+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, javascript-format
+msgid "Available %s"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"This is the list of available %s. You may choose some by selecting them in "
+"the box below and then clicking the \"Choose\" arrow between the two boxes."
+msgstr ""
+
+#, javascript-format
+msgid "Type into this box to filter down the list of available %s."
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Choose all"
+msgstr ""
+
+#, javascript-format
+msgid "Click to choose all %s at once."
+msgstr ""
+
+msgid "Choose all unsuccessful"
+msgstr ""
+
+#, javascript-format
+msgid "Click to choose all unsuccessful %s at once."
+msgstr ""
+
+msgid "Choose all not done"
+msgstr ""
+
+#, javascript-format
+msgid "Click to choose all not done %s at once"
+msgstr ""
+
+msgid "Choose"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+#, javascript-format
+msgid "Chosen %s"
+msgstr ""
+
+#, javascript-format
+msgid ""
+"This is the list of chosen %s. You may remove some by selecting them in the "
+"box below and then clicking the \"Remove\" arrow between the two boxes."
+msgstr ""
+
+msgid "Remove all"
+msgstr ""
+
+#, javascript-format
+msgid "Click to remove all chosen %s at once."
+msgstr ""
+
+msgid "Remove all unsuccessful"
+msgstr ""
+
+#, javascript-format
+msgid "Click to remove all unsuccessful %s at once."
+msgstr ""
+
+msgid "Remove all not done"
+msgstr ""
+
+#, javascript-format
+msgid "Click to remove all not done %s at once."
+msgstr ""
