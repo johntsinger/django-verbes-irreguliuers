@@ -126,9 +126,6 @@ def exercise_result(request, table_id):
     results = get_results(request, table)
     # gets the correction (dict of booleans)
     correction = verify_answer(results)
-    # set n to pass it to the context to creates a range object
-    # needed to creates 10 rows in the template
-    n = len(results['verbes'])
     # modifies done and success attributes of VerbeList object
     # through related name in m2m third table (VerbeList)
     # and modifies done and success attributes of Verbe object
@@ -147,5 +144,5 @@ def exercise_result(request, table_id):
 
     return render(request,
         "verbes_app/exercise_result.html",
-        {'results': results, 'n': range(n), 'correction': correction,
+        {'results': results, 'correction': correction,
          'table_id': table_id, 'table': table})
