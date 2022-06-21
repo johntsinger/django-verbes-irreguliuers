@@ -21,12 +21,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for i in n %}
+            {% for verbes in results.verbes %}
+            {% with counter=forloop.counter0 %} {# set counter with 'with' tag instead of forloop.parentloop.counter0 #}
             <tr>
                 {% for key, values in results.items %}
-                <td class="text-center {% if correction|index:i|index:forloop.counter0 is not True %} unsuccess {% else %} success {% endif %}">{{ values|index:i }}</td>
+                <td class="text-center {% if correction|index:counter|index:forloop.counter0 is not True %} unsuccess {% else %} success {% endif %}">{{ values|index:counter }}</td>
                 {% endfor %}
-            </tr> 
+            </tr>
+            {% endwith %}
             {% endfor %}
         </tbody>
     </table>
