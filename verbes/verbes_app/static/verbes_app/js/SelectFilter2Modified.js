@@ -69,7 +69,7 @@ Requires core.js and SelectBox.js.
             const choose_all = quickElement('a', selector_available, gettext('Choose all'), 'title', interpolate(gettext('Click to choose all %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_add_all_link');
             choose_all.className = 'selector-chooseall';
             // ADDED
-            const choose_all_false = quickElement('a', selector_available, gettext('Choose all false'), 'title', interpolate(gettext('Click to choose all false %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_add_all_false_link');
+            const choose_all_false = quickElement('a', selector_available, gettext('Choose all unsuccessful'), 'title', interpolate(gettext('Click to choose all unsuccessful %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_add_all_false_link');
             choose_all_false.className = 'selector-chooseall-false';
             const choose_all_not_done = quickElement('a', selector_available, gettext('Choose all not done'), 'title', interpolate(gettext('Click to choose all not done %s at once'), [field_name]), 'href', '#', 'id', field_id + '_add_all_not_done_link');
             choose_all_not_done.className = 'selector-chooseall-not-done';
@@ -105,7 +105,7 @@ Requires core.js and SelectBox.js.
             const clear_all = quickElement('a', selector_chosen, gettext('Remove all'), 'title', interpolate(gettext('Click to remove all chosen %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_link');
             clear_all.className = 'selector-clearall';
             // ADDED
-            const clear_all_false = quickElement('a', selector_chosen, gettext('Remove all false'), 'title', interpolate(gettext('Click to remove all false %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_false_link');
+            const clear_all_false = quickElement('a', selector_chosen, gettext('Remove all unsuccessful'), 'title', interpolate(gettext('Click to remove all unsuccessful %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_false_link');
             clear_all_false.className = 'selector-clearall-false';
             const clear_all_not_done = quickElement('a', selector_chosen, gettext('Remove all not done'), 'title', interpolate(gettext('Click to remove all not done %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_not_done_link');
             clear_all_not_done.className = 'selector-clearall-not-done';
