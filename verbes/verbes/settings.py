@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from os.path import join
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authentication',
     'verbes_app',
 ]
 
@@ -57,7 +57,9 @@ ROOT_URLCONF = 'verbes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR.joinpath('templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,8 +128,16 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# locale path for internationalization
+# Locale path for internationalization
+# https://docs.djangoproject.com/en/4.0/ref/settings/#locale-paths
 
 LOCALE_PATHS = [
-    join(BASE_DIR, 'locale'),
+    BASE_DIR.joinpath('locale'),
 ]
+
+# Model used for authentication
+# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-user-model
+
+AUTH_USER_MODEL = 'authentication.User'
+
+LOGIN_URL = 'login'

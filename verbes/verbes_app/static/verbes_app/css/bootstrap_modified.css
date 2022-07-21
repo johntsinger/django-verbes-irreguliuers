@@ -167,6 +167,10 @@ a.dropdown-item:focus, a.dropdown-item:hover {
     font-size: 14px;
 }
 
+span#user {
+    color: rgba(0, 0, 0, 1.0);
+}
+
 /* icons table_list */
 
 .icon-update, .icon-delete {
