@@ -22,7 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="list-style: none;">
                             <a class="nav-link {% block nav_item_verbes_list %}{% endblock %}" href="{% url 'verbe-list' %}">Tous les verbes</a>
                         </li>
@@ -48,7 +48,6 @@
                                         {% for table in tables %}
                                         {% if not table.default %}
                                         <li style="list-style: none;">
-                                            <div class="icons-container ">
                                             <a class="dropdown-item" href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
                                         </li>
                                         {% endif %}
@@ -58,6 +57,17 @@
                                 <li style="list-style: none;"><hr class="dropdown-divider"></li>
                                 <li style="list-style: none;"><a class="dropdown-item" href="{% url 'table-create' %}">Créer une liste</a></li>
                             </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown" style="list-style: none;">
+                            {% if user.is_authenticated %}
+                            <span id="user" data-bs-toggle="toggle" data-bs-auto-close="outside" class="nav-link dropdown-toggle" role="button" data-bs-display="static">{{ request.user }}</span>
+                            <ul class="dropdown-menu dropdown-menu-end top-level fade-down" data-bs-popper='none'>
+                                <li style="list-style: none;"><a class="dropdown-item" href="{% url 'logout' %}">Se déconnecter</a></li>
+                            {% else %}
+                            <a href="{% url 'login' %}">Se connecter</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
