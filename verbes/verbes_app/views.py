@@ -2,6 +2,7 @@ from random import sample
 from django.core import serializers
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 from verbes_app.functions import get_results, verify_answer
 from verbes_app.models import Verbe, Table, VerbeList
 from verbes_app.forms import TableForm, VerbeForm
@@ -13,6 +14,7 @@ def verbe_list(request):
         "verbes_app/verbe_list.html",
         {"verbes": verbes})
 
+@login_required
 def reset_all(request):
     verbes = Verbe.objects.all()
     if request.method == 'POST':
@@ -38,6 +40,7 @@ def table_list(request):
         "verbes_app/table_list.html",
         {"tables": tables})
 
+@login_required
 def table_create(request):
     # creates a json dict of object Verbe with selected fields
     verbes = serializers.serialize('json', Verbe.objects.all(),
@@ -59,6 +62,7 @@ def table_create(request):
         'verbes_app/table_create.html',
         {'form': form, 'verbes': verbes})
 
+@login_required
 def table_update(request, table_id):
     # creates a json dict of object Verbe with selected fields
     verbes = serializers.serialize('json', Verbe.objects.all(),
@@ -79,6 +83,7 @@ def table_update(request, table_id):
         'verbes_app/table_update.html',
         {'form': form, 'verbes': verbes})
 
+@login_required
 def table_delete(request, table_id):
     table = Table.objects.get(id=table_id)
     if request.method == 'POST':
@@ -91,6 +96,7 @@ def table_delete(request, table_id):
         'verbes_app/table_delete.html',
         {'table': table})
 
+@login_required
 def table_reset(request, table_id):
     table = Table.objects.get(id=table_id)
     if request.method == 'POST':
@@ -105,6 +111,7 @@ def table_reset(request, table_id):
         'verbes_app/table_reset.html',
         {'table': table})
 
+@login_required
 def exercise(request, table_id):
     table = Table.objects.get(id=table_id)
     # gets 10 random items of table.verbes
@@ -121,6 +128,7 @@ def exercise(request, table_id):
         {"table": table, "verbes": verbes, "form": form, 
         'verbes_id': verbes_id})
 
+@login_required
 def exercise_result(request, table_id):
     table = Table.objects.get(id=table_id)
     # creates the dictionary of results
