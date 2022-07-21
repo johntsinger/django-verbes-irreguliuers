@@ -57,7 +57,9 @@ ROOT_URLCONF = 'verbes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR.joinpath('templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,3 +139,5 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-user-model
 
 AUTH_USER_MODEL = 'authentication.User'
+
+LOGIN_URL = 'login'
