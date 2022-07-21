@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.views.i18n import JavaScriptCatalog
 from verbes_app import views
+from authentication import views as views2
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+    path('', views2.login_page, name='login'),
+    path('logout/', views2.logout_user, name='logout'),
     path('verbes/', views.verbe_list, name='verbe-list'),
     path('verbes/reset', views.reset_all, name='reset-all'),
     path('verbes/table/<int:table_id>/', views.table_detail,
