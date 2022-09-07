@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block h1_content %}
+    Inscription
+{% endblock %}
+
+{% block content %}
+
+    {{ form.media }}
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+        {% endfor %}
+        <input class="btn me-3 my-3" type="submit" value="S'inscrire" name="inscription">
+    </form>
+{% endblock %}
