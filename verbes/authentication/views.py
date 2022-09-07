@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-from authentication.forms import LoginForm
+from django.shortcuts import render, redirect
+from authentication.forms import LoginForm, SignupForm
+from verbes_app.models import UserProfile, Verbe, Table, UserTable
 
 
 def login_page(request):
@@ -27,3 +29,16 @@ def login_page(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+def signup_page(request):
+    form = SignupForm()
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # auto login user
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
+    return render(request,
+        'authentication/signup.html',
+        {'form': form})
