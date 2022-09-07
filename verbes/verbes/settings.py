@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'verbes_app.context_processors.tables',
+                'verbes_app.context_processors.verbes',
             ],
         },
     },
@@ -96,6 +97,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 4,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -141,3 +145,7 @@ LOCALE_PATHS = [
 AUTH_USER_MODEL = 'authentication.User'
 
 LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'verbe-list'
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1500
