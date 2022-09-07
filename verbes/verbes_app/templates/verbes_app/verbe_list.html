@@ -19,11 +19,19 @@
 {% block tbody %}
     {% for verbe in verbes %} 
     <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
+        {% if user.is_authenticated %}
+        <td>{{ verbe.verbe.present }}</td>
+        <td>{{ verbe.verbe.preterit|replace:"/" }}</td>
+        <td>{{ verbe.verbe.participe_passe|replace:"/" }}</td>
+        <td>{{ verbe.verbe.francais }}</td>
+        {% else %}
         <td>{{ verbe.present }}</td>
         <td>{{ verbe.preterit|replace:"/" }}</td>
         <td>{{ verbe.participe_passe|replace:"/" }}</td>
         <td>{{ verbe.francais }}</td>
+        {% endif %}
     </tr>
+
     {% endfor %}
 {% endblock %}
 

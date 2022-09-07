@@ -23,24 +23,31 @@
 {% endblock %}
 
 {% block tbody %}
-    {% for verbelist_object in table.table_verbes.all %} 
-    <tr class="{% if verbelist_object.success is True %} success {% elif verbelist_object.success is False and verbelist_object.done is True %} unsuccess {% endif %}">
-        <td>{{ verbelist_object.verbe.present }}</td>
-        <td>{{ verbelist_object.verbe.preterit|replace:"/" }}</td>
-        <td>{{ verbelist_object.verbe.participe_passe|replace:"/" }}</td>
-        <td>{{ verbelist_object.verbe.francais }}</td>
+    {% for verbe in user_table %} 
+    <tr class="{% if verbe.success is True %} success {% elif verbe.success is False and verbe.done is True %} unsuccess {% endif %}">
+        {% if user.is_authenticated %}
+        <td>{{ verbe.verbe.present }}</td>
+        <td>{{ verbe.verbe.preterit|replace:"/" }}</td>
+        <td>{{ verbe.verbe.participe_passe|replace:"/" }}</td>
+        <td>{{ verbe.verbe.francais }}</td>
+        {% else %}
+        <td>{{ verbe.present }}</td>
+        <td>{{ verbe.preterit|replace:"/" }}</td>
+        <td>{{ verbe.participe_passe|replace:"/" }}</td>
+        <td>{{ verbe.francais }}</td>
+        {% endif %}
     </tr>
     {% endfor %}
 {% endblock %}
 
 {% block tested_verbs %}
-    {{ table.table_verbes|count_done }}
+    {{ user_table|count_done }}
 {% endblock %}
 
 {% block successed_verbs %}
-    {{ table.table_verbes|count_success }}
+    {{ user_table|count_success }}
 {% endblock %}
 
 {% block not_tested_verbs %}
-    {{ table.table_verbes|count_remainders }}
+    {{ user_table|count_remainders }}
 {% endblock %}

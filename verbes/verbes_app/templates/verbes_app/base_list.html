@@ -37,6 +37,7 @@
     </table>
     {% endblock %}
 
+    {% if user.is_authenticated %}
     {% block counter %}
     <div class="mt-3">
         <p class="d-inline-block me-3">Verbes testés : {% block tested_verbs %}{% endblock %}</p>
@@ -44,5 +45,7 @@
         <p class="d-inline-block me-3">Verbes non testés : {% block not_tested_verbs %}{% endblock %}</p>
     </div>
     {% endblock %}
+    {% endif %}
+
 
 {% endblock %}
