@@ -1,8 +1,8 @@
 import json
-from verbes_app.models import Verbe
+from verbes_app.models import Verbe, UserTable
 
 
-def get_results(request, table):
+def get_results(request, table, user):
     """Creates dictionary with the querydict send by request.POST"""
     results = {}
     exclude = ["csrfmiddlewaretoken", "done", "success"]
@@ -13,12 +13,8 @@ def get_results(request, table):
             verbes_id = json.loads(request.POST.get('verbes_id'))
             verbes = []
             for verbe_id in verbes_id:
-                # filter table.table_verbes by verbe_id 
-                # return a queryset with a unique element the verbelist_object
-                # and get this element using [0]
-                verbelist_object = table.table_verbes.filter(
-                    verbe_id=verbe_id)[0]
-                verbes.append(verbelist_object)
+                user_table = UserTable.objects.get(user_profile=user, verbe__id=verbe_id, table=table)
+                verbes.append(user_table)
             results['verbes'] = verbes
         else:
             if key not in exclude:
