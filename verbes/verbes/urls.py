@@ -25,6 +25,7 @@ urlpatterns = [
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('', views2.login_page, name='login'),
     path('logout/', views2.logout_user, name='logout'),
+    path('singup/', views2.signup_page, name='signup'),
     path('verbes/', views.verbe_list, name='verbe-list'),
     path('verbes/reset', views.reset_all, name='reset-all'),
     path('verbes/table/<int:table_id>/', views.table_detail,
