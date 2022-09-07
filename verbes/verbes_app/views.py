@@ -51,8 +51,9 @@ def table_list(request):
 @login_required
 def table_create(request):
     # creates a json dict of object Verbe with selected fields
-    verbes = serializers.serialize('json', Verbe.objects.all())
     user_profile = UserProfile.objects.get(user=request.user)
+    verbes = serializers.serialize('json', UserVerbe.objects.filter(user_profile=user_profile),
+        fields=('done', 'success'))
     if request.method == "POST":
         # Button envoyer
         if 'envoyer' in request.POST:
@@ -74,8 +75,11 @@ def table_create(request):
 @login_required
 def table_update(request, table_id):
     # creates a json dict of object Verbe with selected fields
-    verbes = serializers.serialize('json', Verbe.objects.all())
+    user_profile = UserProfile.objects.get(user=request.user)
     table = Table.objects.get(id=table_id)
+    verbe_in_table = table.verbes.all()
+    verbes = serializers.serialize('json', UserVerbe.objects.filter(user_profile=user_profile),
+        fields=('done', 'success'))
     if request.method == 'POST':
         form = TableForm(request.POST, instance=table)
         if 'envoyer' in request.POST:
