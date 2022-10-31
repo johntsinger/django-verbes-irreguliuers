@@ -18,6 +18,7 @@ from django.urls import path
 from django.views.i18n import JavaScriptCatalog
 from verbes_app import views
 from authentication import views as views2
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -26,18 +27,14 @@ urlpatterns = [
     path('', views2.login_page, name='login'),
     path('logout/', views2.logout_user, name='logout'),
     path('singup/', views2.signup_page, name='signup'),
+    path('usermodifications/', views2.parameters, name='parameters'),
     path('verbes/', views.verbe_list, name='verbe-list'),
-    path('verbes/reset', views.reset_all, name='reset-all'),
     path('verbes/table/<int:table_id>/', views.table_detail,
         name='table-detail'),
     path('verbes/table/', views.table_list, name='table-list'),
     path('verbes/table/add/', views.table_create, name='table-create'),
     path('verbes/table/<int:table_id>/change', views.table_update,
         name='table-update'),
-    path('verbes/table/<int:table_id>/delete', views.table_delete,
-        name='table-delete'),
-    path('verbes/table/<int:table_id>/reset', views.table_reset,
-        name='table-reset'),
     path('verbes/table/<int:table_id>/exercise/', views.exercise,
         name='exercise'),
     path('verbes/table/<int:table_id>/exercise/result/',
