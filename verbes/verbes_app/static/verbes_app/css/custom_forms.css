@@ -52,6 +52,10 @@ h2 {
     margin-top: 0;
 }
 
+nav li {
+    list-style: none;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -92,4 +96,10 @@ option {
         display: flex;
         flex-direction: column;
     }
+}
+
+
+/* signup form input */
+.signup-input {
+    max-width: 400px;
 }
