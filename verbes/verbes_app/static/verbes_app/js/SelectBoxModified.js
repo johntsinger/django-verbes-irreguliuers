@@ -8,6 +8,11 @@
             const cache = SelectBox.cache[id];
             // ADDED
             let verbes = JSON.parse(verbes_json);
+            // Sort verbes by 'verbe' field necessary not to have an index shift when assigning the success and unsuccess classes
+            // if the UserVerbes objects inside UserProfile have been modified
+            verbes.sort(function (a, b) {
+                return a.fields.verbe - b.fields.verbe;
+            });
             // END ADDED
             for (const node of box.options) {
                 // ADDED
