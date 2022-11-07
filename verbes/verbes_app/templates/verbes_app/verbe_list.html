@@ -13,7 +13,8 @@
 {% endblock %}
 
 {% block info_content_right %}
-    <a href="{% url 'reset-all' %}" title="Réinitialiser la liste"><small>[reset]</small></a>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#reset-all" title="Tout réinitialiser"><small>[reset]</small></a>
+    {% include 'modal.html' with modal_id='reset-all' modal_title='Réinitialiser tous les verbes' form=reset_all_form modal_input_value='Reset' modal_input_name='reset-all' %}
 {% endblock %}
 
 {% block tbody %}
