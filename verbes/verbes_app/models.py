@@ -12,8 +12,8 @@ class Verbe(models.Model):
     francais = models.fields.CharField(max_length=50)
 
     def __str__(self):
-        return f'{self.present} {self.preterit} {self.participe_passe} \
-{self.francais}'
+        return f'{self.present} {self.preterit} {self.participe_passe}' + \
+               f'{self.francais}'
 
 
 class Table(models.Model):
@@ -61,7 +61,8 @@ class UserVerbe(models.Model):
 
 @receiver(m2m_changed, sender=UserProfile.tables.through, dispatch_uid="user_profile_changed")
 def user_profile_changed(sender, instance, action, pk_set, **kwargs):
-    """Create or delete UserTable if Table objects are added or removed from UserProfile.tables m2m"""
+    """Create or delete UserTable if Table objects are added or
+    removed from UserProfile.tables m2m"""
     if action == 'post_add':
         # instance is UserProfile object
         for table in instance.tables.filter(id__in=pk_set):
