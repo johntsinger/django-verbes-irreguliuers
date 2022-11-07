@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block h1_content %}
+    Profil
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="vstack gap-2 my-2">
+        <div class="mx-2 border border-3">
+            <h2 class="my-3 mx-2 mb-4">Changer votre mot de passe</h2>
+            <form method="post" class="mx-4">
+                {% csrf_token %}
+                {{ password_form.as_p }}
+                <div class="d-flex justify-content-md-end">
+                    <input class="btn me-3 my-3" type="submit" value="Valider" name="valider">
+                </div>
+            </form>
+        </div>
+        <div class="mx-2 border border-3">
+            <h2 class="my-3 mx-2 mb-4">Changer votre email</h2>
+            <form method="post" class="mx-4">
+                {% csrf_token %}
+                {{ email_form.as_p }}
+                <div class="d-flex justify-content-md-end">
+                    <input class="btn me-3 my-3" type="submit" value="Valider" name="valider">
+                </div>
+            </form>
+        </div>
+        <div class="mx-2 border border-3">
+            <h2 class="my-3 mx-2 mb-4 text-danger">Supprimer votre compte</h2>
+            <!-- Modal -->
+            <div class="mx-4 my-3">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#account-delete">Je veux supprimer mon compte</a>
+                {% include 'modal.html' with modal_id='account-delete' modal_title='Supprimer votre compte' form=delete_form modal_input_value='Supprimer' modal_input_name='delete-account' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
