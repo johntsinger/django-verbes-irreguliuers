@@ -8,7 +8,9 @@
             <p>{% block info_content_left %}{% endblock %}</p>
         </div>
         <div class="col-4 align-self-sm-start align-self-center text-end">
-            {% block info_content_right %}{% endblock %}
+            {% if user.is_authenticated %}
+                {% block info_content_right %}{% endblock %}
+            {% endif %}
         </div>
     </div>
     {% endblock %}
