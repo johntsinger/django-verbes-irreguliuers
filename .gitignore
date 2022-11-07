@@ -1,3 +1,6 @@
 env/
 verbes/db.sqlite3
+verbes/50 verbes.json
+verbes/105 verbes.json
+verbes/tous les verbes.json
 __pycache__/
