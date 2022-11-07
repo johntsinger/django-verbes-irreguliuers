@@ -1,0 +1,8 @@
+<p>Voulez-vous vraiment nous quitter ?</p>
+<p><strong class="text-danger">Cette action est définitive !</strong></p>
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
