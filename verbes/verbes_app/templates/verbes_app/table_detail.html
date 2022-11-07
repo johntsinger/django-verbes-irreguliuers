@@ -14,12 +14,12 @@
 
 {% block info_content_right %}
     {% if not table.default %}
-    <a href="{% url 'table-update' table.id %}" title="Modifier cette liste"><small>[modifier]</a>
-    <a href="{% url 'table-delete' table.id %}" title="Supprimer cette liste"><small>[supprimer]</a>
+    <a href="{% url 'table-update' table.id %}" title="Modifier cette liste"><small>[modifier]</small></a>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#delete" title="Supprimer cette liste"><small>[supprimer]</small></a>
+    {% include 'modal.html' with modal_id='delete' modal_title='Supprimer la liste' modal_context_data=table.name form=delete_list_form modal_input_value='Supprimer' modal_input_name='delete' %}
     {% endif %}
-    <a href="{% url 'table-reset' table.id %}" title="Réinitialiser cette liste"><small>[reset]</small>
-    </small>
-    </small></a>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#reset" title="Réinitialiser la liste"><small>[reset]</small></a>
+    {% include 'modal.html' with modal_id='reset' modal_title='Réinitialiser la liste' modal_context_data=table.name form=reset_list_form modal_input_value='Reset' modal_input_name='reset' %}
 {% endblock %}
 
 {% block tbody %}
