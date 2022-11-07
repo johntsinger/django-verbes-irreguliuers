@@ -2,7 +2,17 @@
 
 {% block content %}
 
-{% block info %}{% endblock %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if not table.default %}
+
+    {% block info %}{% endblock %}
 
     {{ form.media }}
 
@@ -12,10 +22,16 @@
 
         <div class="{% block div-margin-top %}mt-4{% endblock %}">
             <input class="btn me-3" type="submit" value="{% block value %}Envoyer{% endblock %}" name="envoyer">
-            <input class="btn me-3" type="submit" formnovalidate value= "Annuler" name="annuler">
+            <input class="btn me-3" type="submit" formnovalidate value="Annuler" name="annuler">
         </div>
 
     </form>
+
+{% else %}
+
+<p>Vous ne pouvez pas modifier cette table !</p>
+
+{% endif %}
 
 {% endblock %}
 
