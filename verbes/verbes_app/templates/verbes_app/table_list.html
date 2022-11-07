@@ -34,7 +34,8 @@
         <div class="icons-container d-inline-block me-3">
             <a href="{% url 'table-detail' table.id %}">{{ table.name }}</a>
             <a class="icon-update me-2" href="{% url 'table-update' table.id %}" title="Modifier">Update</a>
-            <a class="icon-delete me-2" href="{% url 'table-delete' table.id %}" title="Supprimer">Delete</a>
+            <a href="#" class="icon-delete me-2" data-bs-toggle="modal" data-bs-target="#{{ table.name }}" title="Supprimer cette liste"><small>[supprimer]</small></a>
+            {% include 'modal.html' with modal_id=table.name modal_title='Supprimer la liste' modal_context_data=table.name form=delete_list_form modal_input_value='Supprimer' modal_input_name='delete' table_id=table.id %}
         </div>
     </li>
     {% endif %}
@@ -43,3 +44,12 @@
 {% endblock %}
 
 {% block counter %}{% endblock %}
+
+{% block js %}
+<!-- Get the name of the table and pass it to strong tag -->
+    <script type="text/javascript">
+        $('.modal').each(function () {
+            $(this).find('strong').append(this.id);
+        });
+    </script>
+{% endblock %}
